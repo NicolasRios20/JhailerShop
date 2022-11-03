@@ -1,0 +1,12 @@
+<app-nav></app-nav>
+
+<h1>cantidad productos: {{myShoppingCart.length}}</h1>
+<h1>cantidad productos: ${{ total }}</h1>
+
+<div class="products--grip">
+    <app-img-carrito [producto]="producto" 
+    *ngFor="let producto of myShoppingCart"
+    > </app-img-carrito>
+</div>
+
+<button type="submit" class="btn btn-primary" (click)="eliminar()" >Comprar</button>

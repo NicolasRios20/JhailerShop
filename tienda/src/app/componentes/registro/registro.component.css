@@ -1,0 +1,28 @@
+body{
+    background: -webkit-radial-gradient(#e1e1e1);
+}
+
+h1{
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    margin: auto;
+}
+form{ 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
+    background-color: #faf0ff;
+    border-radius: 15px;
+}
+
+main{
+    padding:0 0 120px 0 ;
+}
+
+nav{
+    background: -webkit-linear-gradient(rgba(210, 18, 156, 0.378), rgb(202, 75, 225));
+}
+
+

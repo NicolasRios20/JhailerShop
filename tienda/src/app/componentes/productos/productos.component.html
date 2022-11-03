@@ -1,0 +1,11 @@
+<app-nav></app-nav>
+<body>
+    <div class="products--grip">
+        <app-producto [producto]="producto" 
+        *ngFor="let producto of productos"
+        (addedProduct)="onAddToShoppingCart($event)"
+        ></app-producto>
+    </div>
+    
+</body>
+

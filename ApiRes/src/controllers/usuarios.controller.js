@@ -1,6 +1,7 @@
 import { getConnection } from "../database/database";
 
 
+
 const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
@@ -14,7 +15,6 @@ const getAll = async (req, res) => {
 }
 
 const verificaruser= async (req, res) => {
-    
     const {email, contrasena} = req.body;
     if (!email || !contrasena) {
         res.status(400).json({ message: "no ingreso sus datos completos" });

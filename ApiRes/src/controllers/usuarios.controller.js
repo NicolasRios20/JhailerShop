@@ -1,11 +1,11 @@
 import { getConnection } from "../database/database";
-
+var bcrypt = require('bcryptjs');
 
 
 const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
-        const data= await connection.query("SELECT email, contrasena FROM usuarios");
+        const data= await connection.query("SELECT correo_cliente, contrasena FROM cliente");
         console.log(data);
         res.json(data);
     } catch (error) {
@@ -15,16 +15,16 @@ const getAll = async (req, res) => {
 }
 
 const verificaruser= async (req, res) => {
-    const {email, contrasena} = req.body;
-    if (!email || !contrasena) {
+    const {correo_cliente, contrasena} = req.body;
+    if (!correo_cliente || !contrasena) {
         res.status(400).json({ message: "no ingreso sus datos completos" });
     }
     else{
         try {
-            let dato = {email,contrasena};
+            let dato = {correo_cliente,contrasena};
             console.log(dato);
             const connection = await getConnection();
-            const record = await connection.query('SELECT  nombre FROM usuarios WHERE email = ? AND contrasena = ?', [email, contrasena]);
+            const record = await connection.query('SELECT  nombre_cliente FROM cliente WHERE correo_cliente = ? AND contrasena = ?', [correo_cliente, contrasena]);
             dato = record; 
             if(dato == ""){
                 res.status(400).json({ message: "contra invalida" });
@@ -44,21 +44,36 @@ const verificaruser= async (req, res) => {
 
 const add = async (req, res) => {
     
-    const { cc, nombre, email, contrasena, departamento, municipio, direccion, telefono} = req.body;
-    if (!cc  || !nombre || !email || !contrasena || !departamento || !municipio || !direccion || !telefono) {
+    const {nombre_cliente, correo_cliente, contrasena, ciudad, direccion, telefono, image} = req.body;
+    if (!nombre_cliente || !correo_cliente || !contrasena || !ciudad || !direccion || !telefono || !image) {
         res.status(400).json({ message: "Bad Request. Please fill all field." });
     }
     else{
         try {
-            let dato = { cc, nombre, email, contrasena, departamento, municipio, direccion, telefono};
-            const connection = await getConnection();
-            const record = await connection.query("INSERT INTO usuarios SET  ?", dato );
-            dato.id = record.insertId; 
-            res.json( dato );
+           let contrai = await bcrypt.hash(contrasena,8);
+           console.log(contrai);
+           let dato = {
+                nombre_cliente:nombre_cliente,
+                correo_cliente:correo_cliente,
+                contrasena:contrai,
+                ciudad:ciudad,
+                direccion:direccion,
+                telefono:telefono,
+                image:image
+                };
+           try {
+                const connection = await getConnection();
+                const record = await connection.query("INSERT INTO cliente SET  ?", dato );
+                dato.id = record.insertId; 
+                res.json( dato );
+            } catch (error) {
+                res.status(400).json({ message: "ya existe." });
+                console.log("ya existe")
+            }  
         } catch (error) {
-            res.status(400).json({ message: "ya existe." });
-            console.log("ya existe")
-        }  
+            console.log("no");
+        }
+        
     }
 };
 

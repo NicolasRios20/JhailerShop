@@ -1,84 +1,39 @@
-<style>
-    .img{
-        background-image: url("https://img.freepik.com/vector-gratis/marco-juguetes-sexuales-que-consiste-mascara-consolador-esposas-paleta-latigo-cuero-enchufes-anales-ilustracion-elementos-realistas_1284-28738.jpg?w=2000" );
-        background-size:  cover;
-        background-position: center;
-    
-}
-</style>
-
-<body>
-    <main>
-        <app-nav></app-nav>
-        
-        <!-- #Fin menu-->
-        <section class="login">
-            <div class="container w-70 bg-primary mt-5 rounded shadow">
-                <div class="row  align-items-stretch">
-                    <div class="col img ">
-                    </div>
-                    <div class="col p-2 rounded-2 " style="background-color: #faf0ff;">
-                        
-                        <h1 class="fw-bold text-center py-2">Inicio Sesion</h1>
-                        <!-- #login-->
-                        <form [formGroup]="logiForm" (ngSubmit)="onLogin(logiForm.value)">
-                            <div class="mb-4">
-                                <label for="email" class="form-label">Correp electronico</label>
-                                <input type="email" class="form-control" formControlName="email">
-                            </div>
-                            <div class="mb-4">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" formControlName="contrasena">
-                            </div>
-                            <div class="mb-4 form-check">
-                                <input type="checkbox" name="connected" class="form-check-input" >
-                                <label for="connected" class="form-check-label">Mantenerme conectado</label>
-                            </div>
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary" value="Log In">Iniciar Sesión</button>
-                            </div>
-                            <div class="my-3">
-                                <span>No tienes cuenta? <a href="http://localhost:4200/registro">Registrate</a></span> <br>
-                                <span><a href="#">Recuperar contraseña</a></span>
-                            </div>
-                        </form>
-                        <!-- #login con redes sociales -->
-                        <div class="container w-100 my-5">
-                            <div class="row text-center">
-                                <div class="col-12">Iniciar Sesión</div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-outline-primary w-100 my-1">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 ">
-                                                <img src="https://i.ibb.co/gSxbTsv/facebook.png" width="30" alt="">
-                                            </div>
-                                            <div class="col-10 text-center">
-                                                Facebook
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-outline-danger w-100 my-1">
-                                        <div class="row align-items-center">
-                                            <div class="col-2">
-                                                <img src="https://i.ibb.co/k1rG5T7/google.png" width="30" alt="">
-                                            </div>
-                                            <div class="col-10 col-md-9 text-center">
-                                                Google
-                                            </div>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<main>
+    <div class="main-container">
+        <div class="m-0 vh-100 row justify-content-center align-items-center">
+            <div class="login">
+                <div>
+                    <h1>inicio sesion</h1>
                 </div>
+                <form>
+        
+                    <div class="group">      
+                      <input type="email" required formControlName="nombre">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>correo</label>
+                    </div>
+                      
+                    <div class="group">      
+                      <input type="password" required formControlName="correo">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>contraseña</label>
+                    </div>
+            
+            
+
+                    
+                  </form>
+                <div class="text-center text-lg-start mt-4 pt-2">
+                    <button type="button" class="btn btn-primary btn-lg"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
+                        class="link-danger">Register</a></p>
+                </div>
+                <div></div>
             </div>
-        </section>
-    </main>
-</body>
+        </div>
+    </div>
 
-
+</main>

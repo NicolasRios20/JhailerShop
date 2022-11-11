@@ -17,6 +17,9 @@
     height: 60vh;
     background: rgba(196, 196, 196, 0.63);
     border-radius:9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
   /* form starting stylings ------------------------------- */
@@ -113,4 +116,7 @@ input:focus ~ .highlight {
   @keyframes inputHighlighter {
       from { background:#5264AE; }
     to 	{ width:0; background:transparent; }
+  }
+  .btn-primary{
+    background: #3B0C04;
   }

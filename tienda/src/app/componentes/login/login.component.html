@@ -1,22 +1,23 @@
 <main>
+    <app-nav></app-nav>
     <div class="main-container">
         <div class="m-0 vh-100 row justify-content-center align-items-center">
             <div class="login">
                 <div>
-                    <h1>inicio sesion</h1>
+                    <h1 style="font-family:JuliusSansOne ;">inicio sesion</h1>
                 </div>
                 <form>
         
         
                     <div class="group">      
-                    <input type="email" required formControlName="nombre">
+                    <input  type="email" required formControlName="nombre">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>correo</label>
                     </div>
                       
                     <div class="group">      
-                      <input type="password" required formControlName="correo">
+                      <input type="password" required formControlName="contraseña">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>contraseña</label>
@@ -26,13 +27,22 @@
 
                     
                   </form>
-                <div class="text-center text-lg-start mt-4 pt-2">
-                    <button type="button" class="btn btn-primary btn-lg"
-                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                        class="link-danger">Register</a></p>
+                <div class="mt-8 pt-2">
+                    <button type="button" class="btn btn-primary btn-lg "
+                        style="padding-left: 0.8rem; padding-right: 0.8rem; height: 50px; width: 200px;  background:3B0C04; border: 0ch;">Login</button>
+                    
                 </div>
-                <div></div>
+                <div class="row mb-4"  style="padding: 23px; ">
+                    <div class="col-md-6  d-flex justify-content-center text-decoration-none ">
+                    <!-- Simple link -->
+                    <a style=" text-decoration:none; color:black" href="#!">Forgot password? </a>
+                    </div>
+                    <br>
+                    <div class="col-md-6 d-flex justify-content-center ">
+                    <!-- Simple link -->
+                    <a style=" text-decoration:none; color:black"  href="#!">Registrarse</a>
+                  </div>
+                </div>
             </div>
         </div>
     </div>

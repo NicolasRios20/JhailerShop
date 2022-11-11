@@ -1,50 +1,61 @@
 <main>
-    <app-nav></app-nav>
-    <div class="main-container">
-        <div class="m-0 vh-100 row justify-content-center align-items-center">
-            <div class="login">
-                <div>
-                    <h1 style="font-family:JuliusSansOne ;">inicio sesion</h1>
-                </div>
-                <form>
-        
-        
-                    <div class="group">      
-                    <input  type="email" required formControlName="nombre">
-                      <span class="highlight"></span>
-                      <span class="bar"></span>
-                      <label>correo</label>
-                    </div>
-                      
-                    <div class="group">      
-                      <input type="password" required formControlName="contraseña">
-                      <span class="highlight"></span>
-                      <span class="bar"></span>
-                      <label>contraseña</label>
-                    </div>
-            
-            
+  <app-nav></app-nav>
+  <div class="main-container">
+    <div class="m-0 vh-100 row justify-content-center align-items-center">
+      <div class="login">
+          <div>
+            <h1 style="font-family: JuliusSansOne">inicio sesion</h1>
+          </div>
 
-                    
-                  </form>
-                <div class="mt-8 pt-2">
-                    <button type="button" class="btn btn-primary btn-lg "
-                        style="padding-left: 0.8rem; padding-right: 0.8rem; height: 50px; width: 200px;  background:3B0C04; border: 0ch;">Login</button>
-                    
-                </div>
-                <div class="row mb-4"  style="padding: 23px; ">
-                    <div class="col-md-6  d-flex justify-content-center text-decoration-none ">
-                    <!-- Simple link -->
-                    <a style=" text-decoration:none; color:black" href="#!">Forgot password? </a>
-                    </div>
-                    <br>
-                    <div class="col-md-6 d-flex justify-content-center ">
-                    <!-- Simple link -->
-                    <a style=" text-decoration:none; color:black"  href="#!">Registrarse</a>
-                  </div>
-                </div>
+          <form>
+            <div class="group">
+              <input type="e-mail" required/>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>correo</label>
             </div>
-        </div>
-    </div>
 
+            <div class="group">
+              <input placeholder="" type="password" required />
+              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>contraseña  </label>
+            </div>
+
+          </form>
+
+          
+            <button type="button" class="btn btn-light btn-lg"
+              style="
+                padding-left: 0.8rem;
+                padding-right: 0.8rem;
+                height: 50px;
+                width: 200px;
+                background: 3B0C04;
+                border: 0ch;
+              ">Login</button>
+         
+
+          <div class="row justify-content-center align-items-center ">
+
+            <div class="col-md-6" >
+              <!-- Simple link -->
+              <a style="color: black; font-size: 75%;" href="#!"
+                > forgot password?
+              </a>
+            </div>
+
+            <div class="col-md-6 d-flex justify-content-center">
+              <!-- Simple link -->
+              <a style="text-decoration: none; color: black; " href="#!">Registrarse</a>
+            </div>
+          </div>
+
+        </div>
+      
+    </div>
+  </div>
 </main>

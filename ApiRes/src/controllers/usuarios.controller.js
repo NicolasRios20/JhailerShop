@@ -1,5 +1,6 @@
 import { getConnection } from "../database/database";
 var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken')
 
 
 const getAll = async (req, res) => {
@@ -22,18 +23,29 @@ const verificaruser= async (req, res) => {
     else{
         try {
             let dato = {correo_cliente,contrasena};
-            console.log(dato);
             const connection = await getConnection();
-            const record = await connection.query('SELECT  nombre_cliente FROM cliente WHERE correo_cliente = ? AND contrasena = ?', [correo_cliente, contrasena]);
-            dato = record; 
-            if(dato == ""){
-                res.status(400).json({ message: "contra invalida" });
-                console.log("contrasena invalida")
-            }else{
-                console.log(dato);
-                res.json( dato );
-            }
-            
+            connection.query('SELECT  * FROM cliente WHERE correo_cliente = ?', correo_cliente,(err,result)=>{
+                if(err) {
+                    console.log(err);
+                }else {
+                    var data = JSON.parse(JSON.stringify(result));
+                    let contras = data[0].contrasena;
+                    const equals = bcrypt.compareSync(req.body.contrasena, contras);
+                    if (equals != true) {
+                        res.status(400).send({message: 'contrasena invalida'})
+                    } else {
+                        jwt.sign({result}, 'secret_key', (err,token)=>{
+                            if(err) {
+                                console.log(err);
+                            }else {
+                                console.log(token);
+                                res.json(token)
+                            }
+                        })
+                    }
+                    
+                }
+            })  
         } catch (error) {
             res.status(400).json({ message: "contra invalida" });
             console.log("contrasena invalida")

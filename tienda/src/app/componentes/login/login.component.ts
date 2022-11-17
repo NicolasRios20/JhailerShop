@@ -36,13 +36,13 @@ export class LoginComponent implements OnInit {
     
     .subscribe((data) => {
       this.usuario.unshift(data);
-      console.log(data);
       this.ingreso = true;
+
       if (this.ingreso == true) {
         this.nombre = data;
         this.exitoso();
       }  
-    },error =>{
+    },error=>{
       this.fallido();
     });
   };

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   
   onLogin(form: any){
     const ingreso :LoginI  = {
-      email: form.email,
+      correo_cliente: form.email,
       contrasena: form.contrasena,
 
     };

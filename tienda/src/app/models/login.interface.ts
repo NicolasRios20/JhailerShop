@@ -1,4 +1,4 @@
 export interface LoginI{
-    email: string ;
+    correo_cliente: string ;
     contrasena: string ;
 }

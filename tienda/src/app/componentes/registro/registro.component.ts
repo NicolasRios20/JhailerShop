@@ -11,14 +11,9 @@ import Swal from "sweetalert2";
 })
 export class RegistroComponent {
   registroF = new FormGroup({
-    cc : new FormControl(''),
     nombre:new FormControl(''),
     email: new FormControl(''),
-    contrasena: new FormControl(''),
-    departamento: new FormControl(''),
-    municipio: new FormControl(''),
-    direccion: new FormControl(''),
-    telefono: new FormControl(''),
+    contrasena: new FormControl('')
   })
 
   title = 'registro-login';
@@ -37,14 +32,9 @@ export class RegistroComponent {
 
   crearUsuario(registroF:any){
     const task = {
-    cc: registroF.cc,
-    nombre :registroF.nombre , 
-    email :registroF.email,
+    nombre_cliente: registroF.nombre , 
+    correo_cliente: registroF.email,
     contrasena: registroF.contrasena,
-    departamento: registroF.departamento, 
-    municipio: registroF.municipio,
-    direccion: registroF.direccion,
-    telefono: registroF.telefono,
     };
     this.thaskService.crearUsuario(task)
     .subscribe((nuevoTask)=>{

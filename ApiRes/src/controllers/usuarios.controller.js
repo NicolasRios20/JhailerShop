@@ -7,7 +7,6 @@ const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
         const data= await connection.query("SELECT correo_cliente, contrasena FROM cliente");
-        console.log(data);
         res.json(data);
     } catch (error) {
         res.status(500);
@@ -56,8 +55,8 @@ const verificaruser= async (req, res) => {
 
 const add = async (req, res) => {
     
-    const {nombre_cliente, correo_cliente, contrasena, ciudad, direccion, telefono, image} = req.body;
-    if (!nombre_cliente || !correo_cliente || !contrasena || !ciudad || !direccion || !telefono || !image) {
+    const {nombre_cliente, correo_cliente, contrasena} = req.body;
+    if (!nombre_cliente || !correo_cliente || !contrasena ) {
         res.status(400).json({ message: "Bad Request. Please fill all field." });
     }
     else{
@@ -68,10 +67,6 @@ const add = async (req, res) => {
                 nombre_cliente:nombre_cliente,
                 correo_cliente:correo_cliente,
                 contrasena:contrai,
-                ciudad:ciudad,
-                direccion:direccion,
-                telefono:telefono,
-                image:image
                 };
            try {
                 const connection = await getConnection();

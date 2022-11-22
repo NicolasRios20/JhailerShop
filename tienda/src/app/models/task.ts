@@ -1,12 +1,7 @@
 export interface Task {
-    cc: number; 
-    nombre: string;
-    email: string;
+    nombre_cliente: string;
+    correo_cliente: string;
     contrasena: string;
-    departamento: string;
-    municipio: string;
-    direccion: string;
-    telefono: number;
 }
 
 

@@ -12,18 +12,19 @@
               <input type="e-mail" required formControlName="email"/>
               <span class="highlight"></span>
               <span class="bar"></span>
-              <label>correo</label>
+              <label>Correo</label>
             </div>
 
             <div class="group">
-              <input placeholder="" type="password" required formControlName="contrasena"/>
-              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-              </svg>
+              <input placeholder="" type="password" id="password" required formControlName="contrasena"/>
               <span class="highlight"></span>
               <span class="bar"></span>
-              <label>contraseña  </label>
+              <label for="password">Contraseña  </label>
+                <div class="col ">
+                  <a  type="button" id="password" (click)="mostrar()">{{texto}}</a>
+                </div>
             </div>
+            
 
             <button type="submit" class="btn btn-light btn-lg"
             style="
@@ -57,3 +58,4 @@
     </div>
   </div>
 </main>
+

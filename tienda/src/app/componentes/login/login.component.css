@@ -154,4 +154,7 @@ input:focus ~ .highlight {
       from { background:#3B0C04; }
     to 	{ width:0; background:transparent; }
   }
- 
+
+  #viewPassword{
+    cursor:pointer;
+  }

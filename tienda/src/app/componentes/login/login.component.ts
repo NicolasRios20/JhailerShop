@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   nombre: any= {};
   ingreso: boolean = false;
   usuario: LoginI[] =[];
+  texto = "Mostrar contraseña"
 
   logiForm:any = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -63,8 +64,20 @@ export class LoginComponent implements OnInit {
       text: 'EMAIL O CONTRASEÑA INVALIA INTENTE DE NUEVO',
     })
   }
+  
+  mostrar(){
+    
+    let mostrar: any = document.getElementById('password');
+    console.log (mostrar);
+    if(mostrar.type == 'password'){
+      mostrar.type = 'text';
+      this.texto = "Ocultar contraseña"
+    } else{
+      mostrar.type = 'password';
+      this.texto = "Mostrar contraseña"
+    }
 
-
+  }
   /*onLogin(form:any){
     this.url.loginByEmail(form).subscribe(data =>{
       console.log(data);

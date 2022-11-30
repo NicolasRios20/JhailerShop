@@ -13,11 +13,12 @@ export class RegistroComponent {
   registroF = new FormGroup({
     nombre:new FormControl(''),
     email: new FormControl(''),
-    contrasena: new FormControl('')
+    contrasena: new FormControl(''),
+    
   })
 
   title = 'registro-login';
-  
+  texto  = "Mostrar contraseña"
   
   constructor(
     private thaskService: TaskService
@@ -60,5 +61,18 @@ export class RegistroComponent {
       title: 'Oops...',
       text: 'VERIFIQUE EL FORMULARIO INTENTE DE NUEVO',
     })
+  }
+
+  mostrar(){
+    
+    let mostrar: any = document.getElementById('password');
+    console.log (mostrar);
+    if(mostrar.type == 'password'){
+      mostrar.type = 'text';
+      this.texto = "Ocultar contraseña"
+    } else{
+      mostrar.type = 'password';
+      this.texto = "Mostrar contraseña"
+    }
   }
 }

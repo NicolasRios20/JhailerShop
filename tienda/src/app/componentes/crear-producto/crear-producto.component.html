@@ -31,11 +31,6 @@
                                     <span>Subir Producto</span>
 
                                     <div class="form-group">
-                                        <label for="exampleInputImagen"> <span class="titleForm">Imagen</span></label>
-                                        <input type="text" class="form-control" id="exampleInputImagen" placeholder="Url de imagen" formControlName="image">
-                                    </div>
-                    
-                                    <div class="form-group">
                                         <label for="exampleInputNombre"> <span class="titleForm">Nombre</span></label>
                                         <input type="text" class="form-control" id="exampleInputNombre" aria-describedby="nombreHelp" placeholder="Nombre Producto" formControlName="name">
                                         <small id="nombreHelp" class="form-text text-muted"></small>
@@ -50,8 +45,13 @@
                                         <label for="exampleFormControlTextarea1" class="form-label"> <span class="titleForm">Descripcion</span> </label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descripcion del producto..." formControlName="description"></textarea>
                                     </div>
+
+                                    <div>
+                                        <input type="file" />
+                                    </div>
                     
                                     <button type="submit" class="btn btn-primary" value="crearProducto()">Subir Productos</button>
+
                                 </form>
                             </div>  
                         </div>

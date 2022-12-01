@@ -11,7 +11,9 @@
     background-size: cover;
     height: 100vh;
 }
-
+main{
+  height: 100%;
+}
 .login{
     width: 60vh;
     height: 60vh;

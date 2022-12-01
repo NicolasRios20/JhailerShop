@@ -18,7 +18,7 @@ export class RegistroComponent {
   })
 
   title = 'registro-login';
-  texto  = "Mostrar contraseña"
+  
   
   constructor(
     private thaskService: TaskService
@@ -63,16 +63,5 @@ export class RegistroComponent {
     })
   }
 
-  mostrar(){
-    
-    let mostrar: any = document.getElementById('password');
-    console.log (mostrar);
-    if(mostrar.type == 'password'){
-      mostrar.type = 'text';
-      this.texto = "Ocultar contraseña"
-    } else{
-      mostrar.type = 'password';
-      this.texto = "Mostrar contraseña"
-    }
-  }
+  
 }

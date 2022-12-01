@@ -1,14 +1,17 @@
 
 <app-nav></app-nav>
 <body>
-    <section style="background: -webkit-radial-gradient(#e1e1e1);">
-    <div class="container w-70 mt-5 rounded shadow "style="background-color: #faf0ff;">
-        <div class="row  align-items-stretch">
+    <section>
+    <div class=" container w-70 mt-5 rounded ">
+        <div class=" row  align-items-stretch">
 
-            <div class="col ">
+            <div class="colorImage  m-1 col ">
     
                 <div class="prueba">
-                    
+                    <div class="image-preview" id="imagePreview">
+                        <img src="" alt="Image Preview" class="image-preview--image">
+                        <span class="image-preview--default-text">Image preview</span>
+                    </div>
                         <app-img *ngIf="producCreat.image" [img]="producCreat.image"></app-img>
                         <span>{{producCreat.name}}</span>
                         <span>{{producCreat.price}}</span>
@@ -18,7 +21,7 @@
                 
             </div>
 
-            <div class="col bg-white p-2 rounded-2 "style="background-color: #faf0ff;">
+            <div class="colorForm m-1 col p-2  "style="">
 
                 <div class="container w-100 my-5">
 
@@ -28,29 +31,34 @@
                     
                                 <form action="#" [formGroup]="formulario" (ngSubmit)="crearProducto(formulario.value)">
                     
-                                    <span>Subir Producto</span>
+                                    <h2 class=" text-center" style="font-family: JuliusSansOne">Subir Producto</h2>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputNombre"> <span class="titleForm">Nombre</span></label>
-                                        <input type="text" class="form-control" id="exampleInputNombre" aria-describedby="nombreHelp" placeholder="Nombre Producto" formControlName="name">
-                                        <small id="nombreHelp" class="form-text text-muted"></small>
+                                    <div class="group form-group">
+                                        <input type="text" id="InputNombre" required=""  formControlName="name">
+                                        <span class=" highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Nombre</label>
+                                        
                                     </div>
                     
-                                    <div class="form-group">
-                                        <label for="exampleInputPrecio"> <span class="titleForm">Precio</span></label>
-                                        <input type="text" class="form-control" id="exampleInputPrecio" placeholder="Precio" formControlName="price">
+                                    <div class="group">
+                                        <input type="text" id="InputPrecio" required="" formControlName="price">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>Precio</label>
+                                        
                                     </div>
                     
                                     <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label"> <span class="titleForm">Descripcion</span> </label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descripcion del producto..." formControlName="description"></textarea>
+                                        <textarea class="form-control" placeholder="Descripcion del producto..." id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        
                                     </div>
 
                                     <div>
-                                        <input type="file" />
+                                        <input type="file" name="inpFile" id="inpFile">
                                     </div>
                     
-                                    <button type="submit" class="btn btn-primary" value="crearProducto()">Subir Productos</button>
+                                    <button type="submit" class="btn text-light my-4" style="margin-left: 35%; background-color: rgba(59,12,4);"  value="crearProducto()">Subir Productos</button>
 
                                 </form>
                             </div>  
@@ -61,6 +69,33 @@
         </div>
     </div>
 </section>
+/*hacer en typescript*/
+<script>
+    const inpFile = document.getElementById("inpFile");
+    const previewContainer = document.getElementById("imagePreview");
+    const previewImage = previewContainer.querySelector(".image-preview--image");
+    const previewDefaulText = previewContainer.querySelector(".image-preview--default-text");
+
+    inpFile.addEventListener("change", function(){
+        const file = this.files[0];
+        
+        if (file){
+            const reader = new FileReader();
+
+            previewDefaulText.style.display="none";
+            previewImage.style.display="block";
+
+            reader.addEventListener("load", function(){
+                previewImage.setAttribute("src", this.result);
+            });
+            reader.readAsDataURL(file);
+        }else{
+            previewDefaulText.style.display=null;
+            previewImage.style.display=null;
+            previewImage.setAttribute("src", "")
+        }
+    });
+</script>
 </body>
 
 

@@ -8,7 +8,7 @@ import { Producto, CrearProducto } from '../models/product.model';
 
 export class ProductosService {
 
-  url = '/api/products/';
+  url = '/api/producto/';
 
   constructor(
     private http: HttpClient
@@ -16,6 +16,7 @@ export class ProductosService {
 
   getAllproductos(){
     return this.http.get<Producto[]>(this.url);
+
   }
 
   create(data: CrearProducto){

@@ -4,7 +4,7 @@ const getById = async (req, res) => {
     try {
         const { id } = req.params;
         const connection = await getConnection();
-        const result = await connection.query("SELECT * FROM productos WHERE id = ?;",id);
+        const result = await connection.query("SELECT * FROM producto WHERE id = ?;",id);
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -15,7 +15,7 @@ const getById = async (req, res) => {
 const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query("SELECT * FROM productos");
+        const result = await connection.query("SELECT * FROM producto");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -34,7 +34,7 @@ const add = async (req, res) => {
         }else{
             let dato = { name, image, price, description};
             const connection = await getConnection();
-            const record = await connection.query("INSERT INTO productos SET ?", dato );
+            const record = await connection.query("INSERT INTO producto SET ?", dato );
             dato.id = record.insertId; 
             res.json( dato );
         }

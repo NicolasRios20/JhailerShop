@@ -12,7 +12,7 @@ export class ImgCarritoComponent{
   
   @Input() producto : Producto = {
     id: '',
-    price: 0,
+    precio: 0,
     image:'',
     name: '',
     description: '',

@@ -2,9 +2,9 @@ import { getConnection } from "../database/database";
 
 const getById = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id_producto } = req.params;
         const connection = await getConnection();
-        const result = await connection.query("SELECT * FROM producto WHERE id = ?;",id);
+        const result = await connection.query("call listar_producto(?)", id_producto);
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -15,7 +15,7 @@ const getById = async (req, res) => {
 const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query("call registro_productos()");
+        const result = await connection.query("call listar_productos()");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -25,16 +25,14 @@ const getAll = async (req, res) => {
 
 const add = async (req, res) => {
     try {
-        const { name, image, price,description} = req.body;
-        
-        if (!/.*\.(jpg|png|jpeg|gif)/.test(image)) {
-            res.status(400).json({ message: "Bad Request. invali image." });
-        }else if (name === undefined || image === undefined || price === undefined || description === undefined) {
-            res.status(400).json({ message: "Bad Request. Please fill all field." });
+        const { nombre_producto, cantidad, precio_producto, id_categoria} = req.body;
+    
+        if(nombre_producto === undefined || cantidad === undefined || precio_producto === undefined || id_categoria === undefined) {
+            res.status(400).json({ message: "Bad Request. Please fill all field. hola" });
         }else{
-            let dato = { name, image, price, description};
+            let dato = { nombre_producto, cantidad , precio_producto, id_categoria};
             const connection = await getConnection();
-            const record = await connection.query("INSERT INTO producto SET ?", dato );
+            const record = await connection.query("call crear_producto(?)", dato );
             dato.id = record.insertId; 
             res.json( dato );
         }
@@ -56,7 +54,7 @@ const updateById = async (req, res) => {
 
         const datos = { nombre, apellido };
         const connection = await getConnection();
-        const result = await connection.query("UPDATE datos SET ? WHERE id = ?", [nombre, id]);
+        const result = await connection.query("UPDATE productos SET ? WHERE id = ?", datos);
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -66,9 +64,9 @@ const updateById = async (req, res) => {
 
 const deleteById = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { nombre_producto } = req.params;
         const connection = await getConnection();
-        const result = await connection.query("DELETE FROM datos WHERE id = ?", id);
+        const result = await connection.query("call eliminar_producto(?)", nombre_producto);
         res.json(result);
     } catch (error) {
         res.status(500);

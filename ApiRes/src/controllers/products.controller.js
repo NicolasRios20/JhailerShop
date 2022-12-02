@@ -15,7 +15,7 @@ const getById = async (req, res) => {
 const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
-        const result = await connection.query("SELECT * FROM producto");
+        const result = await connection.query("call registro_productos()");
         res.json(result);
     } catch (error) {
         res.status(500);

@@ -62,15 +62,16 @@ const add = async (req, res) => {
     else{
         try {
            let contrai = await bcrypt.hash(contrasena,8);
-           console.log(contrai);
+           
            let dato = {
-                nombre_cliente:nombre_cliente,
-                correo_cliente:correo_cliente,
+                nombre:nombre_cliente,
+                correo:correo_cliente,
                 contrasena:contrai,
                 };
            try {
                 const connection = await getConnection();
-                const record = await connection.query("INSERT INTO cliente SET  ?", dato );
+                const record = await connection.query("INSERT INTO cliente SET ?", dato );
+                print(record)
                 dato.id = record.insertId; 
                 res.json( dato );
             } catch (error) {

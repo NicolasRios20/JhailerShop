@@ -32,7 +32,7 @@ const add = async (req, res) => {
         }else{
             let dato = { nombre_producto, cantidad , precio_producto, id_categoria};
             const connection = await getConnection();
-            const record = await connection.query("call crear_producto(?)", dato );
+            const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria})`);
             dato.id = record.insertId; 
             res.json( dato );
         }
@@ -66,6 +66,7 @@ const deleteById = async (req, res) => {
     try {
         const { nombre_producto } = req.params;
         const connection = await getConnection();
+        console.log(nombre_producto)
         const result = await connection.query("call eliminar_producto(?)", nombre_producto);
         res.json(result);
     } catch (error) {

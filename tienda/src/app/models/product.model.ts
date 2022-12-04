@@ -1,15 +1,17 @@
 export interface Producto{
     id: String;
-    name: string;
-    precio: number;
-    image: string;
-    description: string;
+    nombre_producto: string;
+    cantidad: number;
+    precio_producto: number;
+    id_categoria: number
+    descripcion: string;
 }
 
 
 export interface CrearProducto{
-    name: string;
-    price: number;
-    image: string;
-    description: string;
+    nombre_producto: string;
+    cantidad: number;
+    precio_producto: string;
+    id_categoria:number
+    descripcion: string;
 }

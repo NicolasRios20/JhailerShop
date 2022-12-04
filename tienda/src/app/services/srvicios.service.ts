@@ -25,7 +25,7 @@ export class SrviciosService {
   }
 
   getTotal(){
-    return this.myShoppingCart.reduce((sum,item) => sum + item.precio, 0);
+    return this.myShoppingCart.reduce((sum,item) => sum + item.precio_producto, 0);
   }
 
 }

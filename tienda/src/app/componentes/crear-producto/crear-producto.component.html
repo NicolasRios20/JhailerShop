@@ -10,12 +10,12 @@
                 <div class="prueba">
                     <div class="image-preview" id="imagePreview">
                         <img src="" alt="Image Preview" class="image-preview--image">
+                        <app-img *ngIf="producCreat.nombre_producto" [img]="producCreat.nombre_producto"></app-img>
                         <span class="image-preview--default-text">Image preview</span>
                     </div>
-                        <app-img *ngIf="producCreat.image" [img]="producCreat.image"></app-img>
-                        <span>{{producCreat.name}}</span>
-                        <span>{{producCreat.precio}}</span>
-                        <span>{{producCreat.description}}</span>
+                        <span>{{producCreat.nombre_producto}}</span>
+                        <span>{{producCreat.precio_producto}}</span>
+                        <span>{{producCreat.descripcion}}</span>
                         
                 </div>
                 
@@ -34,7 +34,7 @@
                                     <h2 class=" text-center" style="font-family: JuliusSansOne">Subir Producto</h2>
 
                                     <div class="group form-group">
-                                        <input type="text" id="InputNombre" required=""  formControlName="name">
+                                        <input type="text" id="InputNombre" required=""  formControlName="nombre">
                                         <span class=" highlight"></span>
                                         <span class="bar"></span>
                                         <label>Nombre</label>
@@ -42,16 +42,28 @@
                                     </div>
                     
                                     <div class="group">
-                                        <input type="text" id="InputPrecio" required="" formControlName="price">
+                                        <input type="text" id="InputPrecio" required="" formControlName="precio">
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Precio</label>
-                                        
+                                    </div>
+
+                                    <div class="group">
+                                        <input type="number" id="InputPrecio" required="" formControlName="cantidad">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>cantidad</label>
+                                    </div>
+
+                                    <div class="group">
+                                        <input type="number" id="InputPrecio" required="" formControlName="categoria">
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                        <label>categoria</label>
                                     </div>
                     
                                     <div class="mb-3">
-                                        <textarea class="form-control" placeholder="Descripcion del producto..." id="exampleFormControlTextarea1" rows="3"></textarea>
-                                        
+                                        <textarea class="form-control" placeholder="Descripcion del producto..." id="exampleFormControlTextarea1" rows="3" formControlName="descripcion"></textarea>
                                     </div>
 
                                     <div>

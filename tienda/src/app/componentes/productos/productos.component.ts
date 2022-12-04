@@ -15,6 +15,7 @@ export class ProductosComponent implements OnInit {
   myShoppingCart: Producto[] = [];
   total=0;
   productos: Producto[] = [];
+  
 
   constructor(
     private srviciosService: SrviciosService,
@@ -25,8 +26,9 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.productosService.getAllproductos()
-    .subscribe(data=> {
-    this.productos = data;
+    .subscribe(data => {
+        this.productos = data;
+        console.log(this.productos[0])
     })
   }
 

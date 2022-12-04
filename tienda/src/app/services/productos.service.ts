@@ -16,7 +16,6 @@ export class ProductosService {
 
   getAllproductos(){
     return this.http.get<Producto[]>(this.url);
-
   }
 
   create(data: CrearProducto){

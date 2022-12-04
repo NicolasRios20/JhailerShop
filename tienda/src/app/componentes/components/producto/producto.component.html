@@ -5,11 +5,11 @@
 <button (click)="onAddTocart()">agregar al carrito de compras</button>
 -->
 <div class="card" style="width: 18rem;">
-    <app-img class="card-img-top"  *ngIf="producto.image" [img]="producto.image"></app-img>
+    <app-img class="card-img-top"  *ngIf="producto.nombre_producto" [img]="producto.nombre_producto"></app-img>
     <div class="card-body">
-      <h5 class="card-title">{{producto.name}}</h5>
-      <h5 class="card-tex">{{producto.precio}}</h5>
-      <p class="card-text">{{producto.description}}</p>
+      <h5 class="card-title">{{producto.precio_producto}}</h5>
+      <h5 class="card-tex">{{producto.nombre_producto}}</h5>
+      <p class="card-text">{{producto.descripcion}}</p>
       <a href="#" (click)="onAddTocart()" class="btn btn-primary">agregar</a>
     </div>
   </div>

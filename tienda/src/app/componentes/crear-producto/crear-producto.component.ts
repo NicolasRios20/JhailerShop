@@ -13,20 +13,21 @@ export class CrearProductoComponent implements OnInit {
 
   productos: Producto[] = [];
   
-
   producCreat: Producto = {
     id: '',
-    precio: 0,
-    image:'',
-    name: '',
-    description: '',
+    nombre_producto: '',
+    cantidad: 0,
+    id_categoria: 0,
+    precio_producto: 0,
+    descripcion: '',
   }
 
   formulario = new FormGroup({
-    name: new FormControl('', Validators.required),
-    description: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required),
+    nombre: new FormControl('', Validators.required),
+    descripcion: new FormControl('', Validators.required),
+    precio: new FormControl('', Validators.required),
+    cantidad: new FormControl('', Validators.required),
+    categoria:new FormControl('',Validators.required)
   });
   
   constructor(
@@ -39,10 +40,11 @@ export class CrearProductoComponent implements OnInit {
 
   crearProducto(form: any){
     const producto: CrearProducto = {
-      name: form.name,
-      description: form.description,
-      image: form.image,
-      price: form.price
+      nombre_producto: form.nombre,
+      cantidad: form.cantidad,
+      precio_producto: form.precio,
+      descripcion: form.descripcion,
+      id_categoria:form.categoria
     };
 
     this.productosService.create(producto)

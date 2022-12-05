@@ -26,6 +26,7 @@ export class ImgComponent implements AfterViewInit {
   }
 
   imgLoaded(){
+    
     this.loaded.emit(this.img);
   }
 

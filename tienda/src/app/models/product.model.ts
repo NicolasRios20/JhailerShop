@@ -5,6 +5,7 @@ export interface Producto{
     precio_producto: number;
     id_categoria: number
     descripcion: string;
+    imagen: string;
 }
 
 

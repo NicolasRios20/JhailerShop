@@ -16,7 +16,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { LoginComponent } from '../app/componentes/login/login.component';
-import { ImgCarritoComponent } from '../app/componentes/imgcarrito/imgcarrito.component'
+import { ImgCarritoComponent } from '../app/componentes/imgcarrito/imgcarrito.component';
 
 
 

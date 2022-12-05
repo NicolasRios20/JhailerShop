@@ -20,14 +20,17 @@ export class CrearProductoComponent implements OnInit {
     id_categoria: 0,
     precio_producto: 0,
     descripcion: '',
+    imagen:'',
   }
 
   formulario = new FormGroup({
-    nombre: new FormControl('', Validators.required),
+    nombre_producto: new FormControl('', Validators.required),
     descripcion: new FormControl('', Validators.required),
-    precio: new FormControl('', Validators.required),
+    precio_producto: new FormControl('', Validators.required),
     cantidad: new FormControl('', Validators.required),
-    categoria:new FormControl('',Validators.required)
+    id_categoria:new FormControl('',Validators.required),
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
   });
   
   constructor(
@@ -38,16 +41,33 @@ export class CrearProductoComponent implements OnInit {
     
   };
 
-  crearProducto(form: any){
-    const producto: CrearProducto = {
-      nombre_producto: form.nombre,
-      cantidad: form.cantidad,
-      precio_producto: form.precio,
-      descripcion: form.descripcion,
-      id_categoria:form.categoria
-    };
+  get f(){
+    return this.formulario.controls;
+  }
 
-    this.productosService.create(producto)
+  onFileChange(event:any) {
+  
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.formulario.patchValue({
+        fileSource: file
+      });
+    }
+  }
+
+  crearProducto(form: any){
+    const formData = new FormData();
+    const file = this.formulario.get('fileSource');
+    console.log(file?.value);
+
+    formData.append('file', file?.value || '');
+    formData.append('cantidad', this.formulario.get('cantidad')?.value || '');
+    formData.append('nombre_producto', this.formulario.get('nombre_producto')?.value || '');
+    formData.append('id_categoria', this.formulario.get('id_categoria')?.value || '');
+    formData.append('descripcion', this.formulario.get('descripcion')?.value || '');
+    formData.append('precio_producto', this.formulario.get('precio_producto')?.value || '');
+
+    this.productosService.create(formData)
     .subscribe(data => {
       this.productos.unshift(data);
       this.producCreat = data

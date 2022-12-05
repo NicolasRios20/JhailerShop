@@ -17,6 +17,7 @@ const getAll = async (req, res) => {
         const connection = await getConnection();
         const result = await connection.query("call listar_productos()");
         const datos = result.shift(1) ;
+        console.log(datos)
         res.json(datos);
     } catch (error) {
         res.status(500);
@@ -25,19 +26,21 @@ const getAll = async (req, res) => {
 };
 
 const add = async (req, res) => {
+    
     try {
         const { nombre_producto, cantidad, precio_producto, id_categoria, descripcion} = req.body;
     
         if(nombre_producto === undefined || cantidad === undefined || precio_producto === undefined || id_categoria === undefined || id_categoria === undefined) {
-            res.status(400).json({ message: "Bad Request. Please fill all field. hola" });
+            res.status(400).json({ message: "Bad Request. Please fill all field." });
         }else{
-            let dato = {nombre_producto, cantidad , precio_producto, id_categoria, id_categoria};
+            const imagen_producto = req.files.file;
+            const nombre_imagen = new Date().getTime()+'.png'
+            imagen_producto.mv('./uploads/'+nombre_imagen);
+            let dato = {nombre_producto, cantidad , precio_producto, id_categoria, id_categoria, nombre_imagen};
             const connection = await getConnection();
-            const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria},'${descripcion}')`);
-            dato.id = record.insertId; 
-            res.json( dato );
+            const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria},'${nombre_imagen}','${descripcion}')`);
+            res.json( record );
         }
-
     } catch (error) {
         res.status(500);
         res.send(error.message);

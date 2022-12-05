@@ -17,6 +17,7 @@ export class ImgCarritoComponent{
     id_categoria: 0,
     precio_producto: 0,
     descripcion: '',
+    imagen:'',
   }
   
   constructor() { }

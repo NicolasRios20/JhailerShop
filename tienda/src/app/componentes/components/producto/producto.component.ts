@@ -18,6 +18,7 @@ export class ProductoComponent {
     id_categoria: 0,
     precio_producto: 0,
     descripcion: '',
+    imagen:'',
   }
 
   onAddTocart(){

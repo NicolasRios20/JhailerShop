@@ -34,7 +34,7 @@
                                     <h2 class=" text-center" style="font-family: JuliusSansOne">Subir Producto</h2>
 
                                     <div class="group form-group">
-                                        <input type="text" id="InputNombre" required=""  formControlName="nombre">
+                                        <input type="text" id="InputNombre" required=""  formControlName="nombre_producto">
                                         <span class=" highlight"></span>
                                         <span class="bar"></span>
                                         <label>Nombre</label>
@@ -42,7 +42,7 @@
                                     </div>
                     
                                     <div class="group">
-                                        <input type="text" id="InputPrecio" required="" formControlName="precio">
+                                        <input type="text" id="InputPrecio" required="" formControlName="precio_producto">
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Precio</label>
@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="group">
-                                        <input type="number" id="InputPrecio" required="" formControlName="categoria">
+                                        <input type="number" id="InputPrecio" required="" formControlName="id_categoria">
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>categoria</label>
@@ -65,9 +65,16 @@
                                     <div class="mb-3">
                                         <textarea class="form-control" placeholder="Descripcion del producto..." id="exampleFormControlTextarea1" rows="3" formControlName="descripcion"></textarea>
                                     </div>
+                                    <!---------------------------------------------->
 
-                                    <div>
-                                        <input type="file" name="inpFile" id="inpFile">
+                                    <div class="form-group">
+                                        <label for="file">File</label>
+                                        <input 
+                                            formControlName="file"
+                                            id="file" 
+                                            type="file" 
+                                            class="form-control"
+                                            (change)="onFileChange($event)">
                                     </div>
                     
                                     <button type="submit" class="btn text-light my-4" style="margin-left: 35%; background-color: rgba(59,12,4);"  value="crearProducto()">Subir Productos</button>
@@ -81,33 +88,6 @@
         </div>
     </div>
 </section>
-/*hacer en typescript*/
-<script>
-    const inpFile = document.getElementById("inpFile");
-    const previewContainer = document.getElementById("imagePreview");
-    const previewImage = previewContainer.querySelector(".image-preview--image");
-    const previewDefaulText = previewContainer.querySelector(".image-preview--default-text");
-
-    inpFile.addEventListener("change", function(){
-        const file = this.files[0];
-        
-        if (file){
-            const reader = new FileReader();
-
-            previewDefaulText.style.display="none";
-            previewImage.style.display="block";
-
-            reader.addEventListener("load", function(){
-                previewImage.setAttribute("src", this.result);
-            });
-            reader.readAsDataURL(file);
-        }else{
-            previewDefaulText.style.display=null;
-            previewImage.style.display=null;
-            previewImage.setAttribute("src", "")
-        }
-    });
-</script>
 </body>
 
 

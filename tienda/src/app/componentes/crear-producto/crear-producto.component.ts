@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrearProducto, Producto } from '../../models/product.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CrearProductoComponent implements OnInit {
 
   productos: Producto[] = [];
-  
+
   producCreat: Producto = {
     id: '',
     nombre_producto: '',
@@ -24,11 +25,11 @@ export class CrearProductoComponent implements OnInit {
   }
 
   formulario = new FormGroup({
-    nombre_producto: new FormControl('', Validators.required),
-    descripcion: new FormControl('', Validators.required),
-    precio_producto: new FormControl('', Validators.required),
-    cantidad: new FormControl('', Validators.required),
-    id_categoria:new FormControl('',Validators.required),
+    nombre_producto: new FormControl('', [Validators.required]),
+    descripcion: new FormControl('', [Validators.required]),
+    precio_producto: new FormControl('', [Validators.required]),
+    cantidad: new FormControl('', [Validators.required]),
+    id_categoria:new FormControl('',[Validators.required]),
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
   });
@@ -41,15 +42,11 @@ export class CrearProductoComponent implements OnInit {
     
   };
 
-  get f(){
-    return this.formulario.controls;
-  }
-
   onFileChange(event:any) {
-  
+
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.formulario.patchValue({
+        this.formulario.patchValue({
         fileSource: file
       });
     }
@@ -58,8 +55,6 @@ export class CrearProductoComponent implements OnInit {
   crearProducto(form: any){
     const formData = new FormData();
     const file = this.formulario.get('fileSource');
-    console.log(file?.value);
-
     formData.append('file', file?.value || '');
     formData.append('cantidad', this.formulario.get('cantidad')?.value || '');
     formData.append('nombre_producto', this.formulario.get('nombre_producto')?.value || '');
@@ -70,7 +65,6 @@ export class CrearProductoComponent implements OnInit {
     this.productosService.create(formData)
     .subscribe(data => {
       this.productos.unshift(data);
-      this.producCreat = data
     });
   };
 

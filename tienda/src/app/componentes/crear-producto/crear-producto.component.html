@@ -10,10 +10,10 @@
                 <div class="prueba">
                     <div class="image-preview" id="imagePreview">
                         <img src="" alt="Image Preview" class="image-preview--image">
-                        <app-img *ngIf="producCreat.nombre_producto" [img]="producCreat.nombre_producto"></app-img>
+                        <app-img *ngIf="producCreat.imagen" [img]="producCreat.imagen"></app-img>
                         <span class="image-preview--default-text">Image preview</span>
                     </div>
-                        <span>{{producCreat.nombre_producto}}</span>
+                        <span>{{producCreat.imagen}}</span>
                         <span>{{producCreat.precio_producto}}</span>
                         <span>{{producCreat.descripcion}}</span>
                         

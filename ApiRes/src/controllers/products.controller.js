@@ -16,7 +16,7 @@ const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
         const result = await connection.query("call listar_productos()");
-        const datos = result.shift(1) ;
+        const datos = result.shift(0) ;
         console.log(datos)
         res.json(datos);
     } catch (error) {
@@ -38,7 +38,7 @@ const add = async (req, res) => {
             imagen_producto.mv('./uploads/'+nombre_imagen);
             let dato = {nombre_producto, cantidad , precio_producto, id_categoria, id_categoria, nombre_imagen};
             const connection = await getConnection();
-            const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria},'${nombre_imagen}','${descripcion}')`);
+            const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria},'http://localhost:5000/${nombre_imagen}','${descripcion}')`);
             res.json( record );
         }
     } catch (error) {

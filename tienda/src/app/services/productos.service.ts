@@ -19,9 +19,7 @@ export class ProductosService {
   }
 
   create(data: any){
-    
     return this.http.post<Producto>(this.url,data);
-
   }
 
 }

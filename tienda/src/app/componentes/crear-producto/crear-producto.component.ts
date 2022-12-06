@@ -64,8 +64,10 @@ export class CrearProductoComponent implements OnInit {
 
     this.productosService.create(formData)
     .subscribe(data => {
-      this.productos.unshift(data);
-    });
-  };
-
-};
+      alert("registro exitoso")
+      this.formulario.reset()
+    },error =>{
+      alert("no se pudo generar el registro porfavor revisa los campos")
+    })
+  }
+}

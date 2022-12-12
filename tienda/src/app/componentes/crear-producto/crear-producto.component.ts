@@ -23,6 +23,7 @@ export class CrearProductoComponent implements OnInit {
     descripcion: '',
     imagen:'',
   }
+  
 
   formulario = new FormGroup({
     nombre_producto: new FormControl('', [Validators.required]),
@@ -64,8 +65,10 @@ export class CrearProductoComponent implements OnInit {
 
     this.productosService.create(formData)
     .subscribe(data => {
-      alert("Registro Exitoso")
-      this.formulario.reset()
+      this.producCreat = data
+      this.productos.unshift(data);
+      this.formulario.reset();
+      alert("Registro Exitoso");
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos")
     })

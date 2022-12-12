@@ -16,8 +16,7 @@ const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
         const result = await connection.query("call listar_productos()");
-        const datos = result.shift(0) ;
-        console.log(datos)
+        const datos = result.shift(0);
         res.json(datos);
     } catch (error) {
         res.status(500);
@@ -36,10 +35,14 @@ const add = async (req, res) => {
             const imagen_producto = req.files.file;
             const nombre_imagen = new Date().getTime()+'.png'
             imagen_producto.mv('./uploads/'+nombre_imagen);
-            let dato = {nombre_producto, cantidad , precio_producto, id_categoria, id_categoria, nombre_imagen};
             const connection = await getConnection();
             const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria},'http://localhost:5000/${nombre_imagen}','${descripcion}')`);
-            res.json( record );
+            if(record.protocol41 == true){
+                const connection = await getConnection();
+                const result = await connection.query(`SELECT * FROM productos WHERE imagen = 'http://localhost:5000/${nombre_imagen}'`);
+                const datos = result.shift(0);
+                res.json( datos );
+            }
         }
     } catch (error) {
         res.status(500);

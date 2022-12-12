@@ -28,7 +28,6 @@ export class ProductosComponent implements OnInit {
     this.productosService.getAllproductos()
     .subscribe(data => {
         this.productos = data;
-        console.log(data)
     })
   }
 

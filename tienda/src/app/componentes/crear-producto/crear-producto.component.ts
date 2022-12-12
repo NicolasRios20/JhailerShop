@@ -64,10 +64,10 @@ export class CrearProductoComponent implements OnInit {
 
     this.productosService.create(formData)
     .subscribe(data => {
-      alert("registro exitoso")
+      alert("Registro Exitoso")
       this.formulario.reset()
     },error =>{
-      alert("no se pudo generar el registro porfavor revisa los campos")
+      alert("Ocurrio un Error por favor Verificar los Campos")
     })
   }
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CrearProducto, Producto } from '../../models/product.model';
+import { Producto } from '../../models/product.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { from } from 'rxjs';
 
 
 @Component({
@@ -13,7 +12,6 @@ import { from } from 'rxjs';
 export class CrearProductoComponent implements OnInit {
 
   productos: Producto[] = [];
-
   producCreat: Producto = {
     id: '',
     nombre_producto: '',
@@ -23,7 +21,7 @@ export class CrearProductoComponent implements OnInit {
     descripcion: '',
     imagen:'',
   }
-  
+
 
   formulario = new FormGroup({
     nombre_producto: new FormControl('', [Validators.required]),
@@ -34,6 +32,7 @@ export class CrearProductoComponent implements OnInit {
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
   });
+  Producto: any;
   
   constructor(
     private productosService: ProductosService,
@@ -53,6 +52,10 @@ export class CrearProductoComponent implements OnInit {
     }
   }
 
+  limpiarCampos(){
+    this.formulario.reset();
+  }
+
   crearProducto(form: any){
     const formData = new FormData();
     const file = this.formulario.get('fileSource');
@@ -67,7 +70,6 @@ export class CrearProductoComponent implements OnInit {
     .subscribe(data => {
       this.producCreat = data
       this.productos.unshift(data);
-      this.formulario.reset();
       alert("Registro Exitoso");
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos")

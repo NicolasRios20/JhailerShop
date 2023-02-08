@@ -6,6 +6,7 @@ const router = Router();
 router.get("/", usuariosController.getAll);
 router.post("/", usuariosController.add);
 router.post('/email', usuariosController.verificaruser);
+router.put("/:id_cliente", usuariosController.actualizardatos);
 
 
 export default router;

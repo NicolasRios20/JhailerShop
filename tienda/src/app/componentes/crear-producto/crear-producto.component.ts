@@ -54,6 +54,7 @@ export class CrearProductoComponent implements OnInit {
 
   limpiarCampos(){
     this.formulario.reset();
+    
   }
 
   crearProducto(form: any){

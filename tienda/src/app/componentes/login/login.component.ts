@@ -12,7 +12,7 @@ import { LoginI } from '../../models/login.interface';
 export class LoginComponent implements OnInit {
   nombre: any= {};
   ingreso: boolean = false;
-  usuario: LoginI[] =[];
+  usuario: LoginI[] = [];
   texto = "Mostrar contraseña"
 
   logiForm:any = new FormGroup({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   
   onLogin(form: any){
     const ingreso :LoginI  = {
-      correo_cliente: form.email,
+      correo: form.email,
       contrasena: form.contrasena,
 
     };
@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     .subscribe((data) => {
       this.usuario.unshift(data);
       this.ingreso = true;
-
       if (this.ingreso == true) {
         this.nombre = data;
         this.exitoso();
@@ -78,10 +77,5 @@ export class LoginComponent implements OnInit {
     }
 
   }
-  /*onLogin(form:any){
-    this.url.loginByEmail(form).subscribe(data =>{
-      console.log(data);
-    })
-  }*/
 
 }

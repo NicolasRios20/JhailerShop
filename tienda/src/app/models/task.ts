@@ -1,6 +1,6 @@
 export interface Task {
-    nombre_cliente: string;
-    correo_cliente: string;
+    nombre: string;
+    correo: string;
     contrasena: string;
 }
 

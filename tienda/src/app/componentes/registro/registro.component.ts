@@ -33,8 +33,8 @@ export class RegistroComponent {
 
   crearUsuario(registroF:any){
     const task = {
-    nombre_cliente: registroF.nombre , 
-    correo_cliente: registroF.email,
+    nombre: registroF.nombre , 
+    correo: registroF.email,
     contrasena: registroF.contrasena,
     };
     this.thaskService.crearUsuario(task)

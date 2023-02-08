@@ -22,11 +22,6 @@ export class TaskService {
     return this.http.post<LoginI>(`${this.api}email/`,form);
   }
 
-  /*loginByEmail(form: LoginI): Observable<ResponseI>{
-    let direccion = `${this.api}email`;
-    return this.http.post<ResponseI>(direccion,form);
-  }*/
-
   getAllTasks(){
 
     return this.http.get(this.api);

@@ -3,7 +3,7 @@ import { methods as usuariosController } from "../controllers/usuarios.controlle
 
 const router = Router();
 
-router.get("/", usuariosController.getAll);
+router.get("/:id_cliente", usuariosController.getAll);
 router.post("/", usuariosController.add);
 router.post('/email', usuariosController.verificaruser);
 router.put("/:id_cliente", usuariosController.actualizardatos);

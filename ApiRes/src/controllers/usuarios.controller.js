@@ -5,8 +5,9 @@ var jwt = require('jsonwebtoken')
 //  consultar todos los usuarios
 const getAll = async (req, res) => {
     try {
+        const { id_cliente } = req.params;
         const connection = await getConnection();
-        const data= await connection.query("SELECT correo, contrasena FROM cliente");
+        const data= await connection.query("SELECT * FROM cliente WHERE id_cliente = ? ", id_cliente);
         res.json(data);
     } catch (error) {
         res.status(500);
@@ -30,7 +31,7 @@ const add = async (req, res) => {
             };
             try {
                 const connection = await getConnection();
-                const record = await connection.query("INSERT INTO cliente SET ?", [dato] );
+                await connection.query("INSERT INTO cliente SET ?", [dato] );
                 console.log("registro exitoso");
                 res.json( dato );
             } catch {
@@ -58,6 +59,7 @@ const verificaruser= async (req, res) => {
                     let id = data[0].id_cliente
                     let contras = data[0].contrasena;
                     const equals = bcrypt.compareSync(req.body.contrasena, contras);
+                    console.log(equals)
                     if (equals != true) {
                         res.status(400).send({message: 'contrasena invalida'})
                     } else {
@@ -67,7 +69,6 @@ const verificaruser= async (req, res) => {
                                 console.log(err);
                             }else {
                                 console.log(token);
-                                console.log("soy el id:", id)
                                 res.json(token);
                             }
                         })

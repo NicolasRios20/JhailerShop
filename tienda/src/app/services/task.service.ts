@@ -6,7 +6,7 @@ import { LoginI } from '../models/login.interface';
 
 
 
-import { Task } from '../models/task';
+import { datosUsuario, Task } from '../models/task';
 
 
 @Injectable({
@@ -41,5 +41,8 @@ export class TaskService {
     const path = `${this.api}`;
     return this.http.post(path, task);
 
+  }
+  actualizarUsuario(id: any){
+    return this.http.get<[datosUsuario]>(`${this.api}${id}`);
   }
 }

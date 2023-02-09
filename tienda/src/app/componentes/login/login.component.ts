@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { LoginI } from '../../models/login.interface';
 import jtw_decode from "jwt-decode";
-import { Token } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-login',
@@ -45,11 +45,9 @@ export class LoginComponent implements OnInit {
       if (this.ingreso == true) {
         console.log(token)
         localStorage.setItem('token',JSON.stringify(token))
-        let hola: any = localStorage.getItem('token');
-        let nico: any = jtw_decode(hola)
-        //let correo = hola.correo
-        console.log(hola)
-        console.log(nico.id)
+        let datoToken: any = localStorage.getItem('token');
+        let dato: any = jtw_decode(datoToken)
+        console.log(dato.id)
         this.exitoso();
       }  
     },error=>{

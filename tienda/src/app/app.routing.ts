@@ -16,7 +16,7 @@ const appRoutes:Routes =[
     {path:'carrito', component:CarritoComponent},
     {path:'registro', component:RegistroComponent},
     {path:'login', component:LoginComponent},
-    {path:'editaruser/:id', component:ActualizarUsuariosComponent},
+    {path:'editaruser', component:ActualizarUsuariosComponent},
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 
 ];

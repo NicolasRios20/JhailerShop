@@ -42,7 +42,6 @@ const add = async (req, res) => {
 
 // autenticacion de datos login 
 const verificaruser= async (req, res) => {
-    console.log("hola");
     const {correo, contrasena} = req.body;
     if (!correo || !contrasena) {
         res.status(400).json({ message: "no ingreso sus datos completos" });
@@ -56,17 +55,20 @@ const verificaruser= async (req, res) => {
                     console.log(err);
                 }else {
                     var data = JSON.parse(JSON.stringify(result));
+                    let id = data[0].id_cliente
                     let contras = data[0].contrasena;
                     const equals = bcrypt.compareSync(req.body.contrasena, contras);
                     if (equals != true) {
                         res.status(400).send({message: 'contrasena invalida'})
                     } else {
-                        jwt.sign({correo}, 'secret_key', (err,token)=>{
+
+                        jwt.sign({id}, 'secret_key', (err,token)=>{
                             if(err) {
                                 console.log(err);
                             }else {
                                 console.log(token);
-                                res.json(token)
+                                console.log("soy el id:", id)
+                                res.json(token);
                             }
                         })
                     }

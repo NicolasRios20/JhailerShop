@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { LoginI } from '../../models/login.interface';
+import jtw_decode from "jwt-decode";
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,9 @@ export class LoginComponent implements OnInit {
     contrasena: new FormControl('', Validators.required)
   })
 
-  constructor( private url:TaskService) { }
+  constructor( private url:TaskService) { 
+    
+   }
 
   ngOnInit(): void {
   }
@@ -35,11 +39,17 @@ export class LoginComponent implements OnInit {
 
     this.url.loginByEmail(ingreso)
     
-    .subscribe((data) => {
-      this.usuario.unshift(data);
+    .subscribe((token) => {
+
       this.ingreso = true;
       if (this.ingreso == true) {
-        this.nombre = data;
+        console.log(token)
+        localStorage.setItem('token',JSON.stringify(token))
+        let hola: any = localStorage.getItem('token');
+        let nico: any = jtw_decode(hola)
+        //let correo = hola.correo
+        console.log(hola)
+        console.log(nico.id)
         this.exitoso();
       }  
     },error=>{
@@ -77,5 +87,7 @@ export class LoginComponent implements OnInit {
     }
 
   }
+
+
 
 }

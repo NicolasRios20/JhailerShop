@@ -1,5 +1,6 @@
 import { getConnection } from "../database/database";
 
+// listar un unico producto.
 const getById = async (req, res) => {
     try {
         const { id_producto } = req.params;
@@ -12,6 +13,8 @@ const getById = async (req, res) => {
     }
 };
 
+
+//listar todos los productos de la base de datos.
 const getAll = async (req, res) => {
     try {
         const connection = await getConnection();
@@ -24,6 +27,7 @@ const getAll = async (req, res) => {
     }
 };
 
+//agregar productos a la base de datos.
 const add = async (req, res) => {
     
     try {
@@ -50,6 +54,7 @@ const add = async (req, res) => {
     }
 };
 
+//modificar un producto de la base de datos
 const updateById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -69,18 +74,20 @@ const updateById = async (req, res) => {
     }
 };
 
+// eliminar producto de la base de datos
 const deleteById = async (req, res) => {
     try {
         const { nombre_producto } = req.params;
         const connection = await getConnection();
         console.log(nombre_producto)
-        const result = await connection.query("call eliminar_producto(?)", nombre_producto);
+        const result = await connection.query("DELETE FROM productos WHERE nombre_producto = ?", nombre_producto);
         res.json(result);
     } catch (error) {
         res.status(500);
         res.send(error.message);
     }
 };
+
 
 export const methods = {
     getById,

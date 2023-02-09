@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../models/product.model';
 import { ProductosService } from 'src/app/services/productos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoriasService } from '../../services/categorias.service';
+import { Categoria } from '../../models/categorias.interface';
 
 
 @Component({
@@ -12,6 +14,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CrearProductoComponent implements OnInit {
 
   productos: Producto[] = [];
+  categoria: Categoria[] = [];
+
   producCreat: Producto = {
     id: '',
     nombre_producto: '',
@@ -33,13 +37,20 @@ export class CrearProductoComponent implements OnInit {
     fileSource: new FormControl('', [Validators.required])
   });
   Producto: any;
+  id: any;
+  idCarrera: any;
   
   constructor(
     private productosService: ProductosService,
+    private categoriasService: CategoriasService
     ) {};
 
   ngOnInit(): void {
-    
+    this.categoriasService.getAll()
+    .subscribe(data => {
+        this.categoria = data;
+        console.log(this.categoria)
+    })
   };
 
   onFileChange(event:any) {
@@ -54,7 +65,6 @@ export class CrearProductoComponent implements OnInit {
 
   limpiarCampos(){
     this.formulario.reset();
-    
   }
 
   crearProducto(form: any){
@@ -63,7 +73,7 @@ export class CrearProductoComponent implements OnInit {
     formData.append('file', file?.value || '');
     formData.append('cantidad', this.formulario.get('cantidad')?.value || '');
     formData.append('nombre_producto', this.formulario.get('nombre_producto')?.value || '');
-    formData.append('id_categoria', this.formulario.get('id_categoria')?.value || '');
+    formData.append('id_categoria', this.formulario.get(`${this.idCarrera}`)?.value || '');
     formData.append('descripcion', this.formulario.get('descripcion')?.value || '');
     formData.append('precio_producto', this.formulario.get('precio_producto')?.value || '');
 
@@ -74,6 +84,10 @@ export class CrearProductoComponent implements OnInit {
       alert("Registro Exitoso");
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos")
-    })
+
+    });
+    
+
   }
+
 }

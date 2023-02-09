@@ -54,14 +54,22 @@
                                         <span class="bar"></span>
                                         <label>cantidad</label>
                                     </div>
-
+                                    <div>
+                                        <label for="lang">Lenguaje</label>
+                                        <select>
+                                            <option value="0" selected>SELECCIONE UNA CATEGORIA</option>
+                                            <option id="lang" *ngFor="let item of categoria ">{{item.nombre_categoria}}</option>
+                                        </select>
+                            
+                                    </div>
+                                    <!--
                                     <div class="group">
                                         <input type="number" id="InputPrecio" required formControlName="id_categoria">
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>categoria</label>
                                     </div>
-                    
+                                    -->
                                     <div class="mb-3">
                                         <textarea class="form-control" placeholder="Descripcion del producto..." id="exampleFormControlTextarea1" rows="3" formControlName="descripcion"></textarea>
                                     </div>

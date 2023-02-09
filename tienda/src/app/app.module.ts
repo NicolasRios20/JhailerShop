@@ -19,6 +19,7 @@ import { LoginComponent } from '../app/componentes/login/login.component';
 import { ImgCarritoComponent } from '../app/componentes/imgcarrito/imgcarrito.component';
 import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { FooterComponent } from './componentes/footer/footer.component';
+import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 
 
 
@@ -37,6 +38,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
     ImgCarritoComponent,
     CarruselComponent,
     FooterComponent,
+    ActualizarUsuariosComponent,
 
    
   ],

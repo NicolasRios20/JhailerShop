@@ -6,6 +6,7 @@ import { ProductosComponent } from './componentes/productos/productos.component'
 import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { LoginComponent } from './componentes/login/login.component';
+import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 
 
 const appRoutes:Routes =[
@@ -15,6 +16,7 @@ const appRoutes:Routes =[
     {path:'carrito', component:CarritoComponent},
     {path:'registro', component:RegistroComponent},
     {path:'login', component:LoginComponent},
+    {path:'editaruser/:id', component:ActualizarUsuariosComponent},
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 
 ];

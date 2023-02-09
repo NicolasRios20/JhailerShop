@@ -5,7 +5,9 @@ import { LoginI } from '../models/login.interface';
 
 
 
+
 import { Task } from '../models/task';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class TaskService {
   
    api = '/api/users/';
 
+
   constructor(
     private http: HttpClient
   ) { }
@@ -21,6 +24,8 @@ export class TaskService {
   loginByEmail(form: LoginI){
     return this.http.post<LoginI>(`${this.api}email/`,form);
   }
+
+
 
   getAllTasks(){
 

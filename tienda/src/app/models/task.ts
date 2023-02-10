@@ -11,6 +11,7 @@ export interface datosUsuario {
     ciudad : string;
     telefono : string;
     foto: string;
+    rol: string;
 }
 
 

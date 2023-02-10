@@ -24,10 +24,12 @@ const add = async (req, res) => {
     }
     else{
         let contrai = await bcrypt.hash(contrasena,8);
+        let rol = 0
            let dato = {
                 nombre:nombre,
                 correo:correo,
                 contrasena:contrai,
+                rol:rol,
             };
             try {
                 const connection = await getConnection();
@@ -58,17 +60,19 @@ const verificaruser= async (req, res) => {
                     var data = JSON.parse(JSON.stringify(result));
                     let id = data[0].id_cliente
                     let contras = data[0].contrasena;
+                    let rol = data[0].rol
                     const equals = bcrypt.compareSync(req.body.contrasena, contras);
                     console.log(equals)
                     if (equals != true) {
                         res.status(400).send({message: 'contrasena invalida'})
                     } else {
 
-                        jwt.sign({id}, 'secret_key', (err,token)=>{
+                        jwt.sign({id,rol}, 'secret_key', (err,token)=>{
                             if(err) {
                                 console.log(err);
                             }else {
                                 console.log(token);
+                                console.log(rol)
                                 res.json(token);
                             }
                         })

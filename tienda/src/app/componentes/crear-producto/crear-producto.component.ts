@@ -15,7 +15,7 @@ export class CrearProductoComponent implements OnInit {
 
   productos: Producto[] = [];
   categoria: Categoria[] = [];
-
+  valorId_categoria: any;
   producCreat: Producto = {
     id: '',
     nombre_producto: '',
@@ -36,9 +36,7 @@ export class CrearProductoComponent implements OnInit {
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
   });
-  Producto: any;
-  id: any;
-  idCarrera: any;
+  
   
   constructor(
     private productosService: ProductosService,
@@ -49,12 +47,10 @@ export class CrearProductoComponent implements OnInit {
     this.categoriasService.getAll()
     .subscribe(data => {
         this.categoria = data;
-        console.log(this.categoria)
     })
   };
 
   onFileChange(event:any) {
-
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
         this.formulario.patchValue({
@@ -63,8 +59,28 @@ export class CrearProductoComponent implements OnInit {
     }
   }
 
+  idCatecoria(event:any){
+    let id = event.target.value;
+    if(id < 0 ){
+      id=0;
+      alert("La categoria no existe");
+    }else{
+      let a = this.categoria.filter(function(a) {
+        return a.nombre_categoria == id ;
+      });
+      
+      for (let index = 0; index < a.length; index++) {
+        let element = a[index];
+        this.valorId_categoria = element.id_categoria;
+      }
+    }
+
+  }
+
   limpiarCampos(){
     this.formulario.reset();
+    this.valorId_categoria = 0;
+    this.producCreat.imagen = "";
   }
 
   crearProducto(form: any){
@@ -73,17 +89,17 @@ export class CrearProductoComponent implements OnInit {
     formData.append('file', file?.value || '');
     formData.append('cantidad', this.formulario.get('cantidad')?.value || '');
     formData.append('nombre_producto', this.formulario.get('nombre_producto')?.value || '');
-    formData.append('id_categoria', this.formulario.get(`${this.idCarrera}`)?.value || '');
+    formData.append('id_categoria', this.valorId_categoria);
     formData.append('descripcion', this.formulario.get('descripcion')?.value || '');
     formData.append('precio_producto', this.formulario.get('precio_producto')?.value || '');
-
+    console.log(form);
     this.productosService.create(formData)
     .subscribe(data => {
       this.producCreat = data
       this.productos.unshift(data);
       alert("Registro Exitoso");
     },error =>{
-      alert("Ocurrio un Error por favor Verificar los Campos")
+      alert("Ocurrio un Error por favor Verificar los Campos");
 
     });
     

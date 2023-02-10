@@ -56,9 +56,8 @@
                                     </div>
                                     <div>
                                         <label for="lang">Lenguaje</label>
-                                        <select>
-                                            <option value="0" selected>SELECCIONE UNA CATEGOR</option>
-                                            <option id="lang" *ngFor="let item of categoria ">{{item.nombre_categoria}}</option>
+                                        <select formControlName="id_categoria" (change)="idCatecoria($event)">
+                                            <option *ngFor="let item of categoria ">{{item.nombre_categoria}}</option>
                                         </select>
                             
                                     </div>

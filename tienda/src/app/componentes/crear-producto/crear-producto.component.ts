@@ -92,7 +92,6 @@ export class CrearProductoComponent implements OnInit {
     formData.append('id_categoria', this.valorId_categoria);
     formData.append('descripcion', this.formulario.get('descripcion')?.value || '');
     formData.append('precio_producto', this.formulario.get('precio_producto')?.value || '');
-    console.log(form);
     this.productosService.create(formData)
     .subscribe(data => {
       this.producCreat = data
@@ -100,7 +99,6 @@ export class CrearProductoComponent implements OnInit {
       alert("Registro Exitoso");
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos");
-
     });
     
 

@@ -1,0 +1,42 @@
+<div class="colorForm m-1 col p-2  "style="">
+
+    <div class="container w-100 my-5">
+
+        <div class="row">
+            <div class="container">
+                <div class="abs-center">
+        
+                    <form  [formGroup]="formulario" (ngSubmit)="crearProducto(formulario.value)">
+        
+                        <h2 class=" text-center" style="font-family: JuliusSansOne">Subir Producto</h2>
+
+                        <div class="group">
+                            <input type="text" id="InputPrecio" required formControlName="nombre_proveedor">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Nombre completo</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="text" id="InputPrecio" required formControlName="ubicacion">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Ubicacion</label>
+                        </div>
+
+                        <div class="group form-group">
+                            <input type="text" id="InputNombre" required  formControlName="cuenta_bancaria">
+                            <span class=" highlight"></span>
+                            <span class="bar"></span>
+                            <label>Cuenta Bancaria</label>
+                        </div>
+        
+                        <button type="submit" class="btn text-light my-4" style="margin-left: 35%; background-color: rgba(59,12,4);"  value="crearProducto()">Crear Proveedor</button>
+                        
+                    </form>
+                    <button type="submit" class="btn text-light my-4" style="margin-left: 35%; background-color: rgba(59,12,4);"  (click)="0">Nuevo</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

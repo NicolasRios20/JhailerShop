@@ -21,7 +21,7 @@ import { ImgCarritoComponent } from '../app/componentes/imgcarrito/imgcarrito.co
 import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
-import { from } from 'rxjs';
+import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 
 
 
@@ -41,6 +41,7 @@ import { from } from 'rxjs';
     CarruselComponent,
     FooterComponent,
     ActualizarUsuariosComponent,
+    ProveedorComponent,
 
    
   ],

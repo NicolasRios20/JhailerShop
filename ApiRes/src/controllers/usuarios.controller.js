@@ -43,11 +43,12 @@ const add = async (req, res) => {
     }
 };
 
+
 // autenticacion de datos login 
 const verificaruser= async (req, res) => {
     const {correo, contrasena} = req.body;
     if (!correo || !contrasena) {
-        res.status(400).json({ message: "no ingreso sus datos completos" });
+        res.status(400).json({ message: "ingrese sus datos completos" });
     }
     else{
         try {
@@ -64,7 +65,7 @@ const verificaruser= async (req, res) => {
                     const equals = bcrypt.compareSync(req.body.contrasena, contras);
                     console.log(equals)
                     if (equals != true) {
-                        res.status(400).send({message: 'contrasena invalida'})
+                        res.status(400).send({message: 'contraseña invalida'})
                     } else {
 
                         jwt.sign({id,rol}, 'secret_key', (err,token)=>{
@@ -72,7 +73,6 @@ const verificaruser= async (req, res) => {
                                 console.log(err);
                             }else {
                                 console.log(token);
-                                console.log(rol)
                                 res.json(token);
                             }
                         })
@@ -81,11 +81,12 @@ const verificaruser= async (req, res) => {
                 }
             })  
         } catch (error) {
-            res.status(400).json({ message: "contra invalida" });
+            res.status(400).json({ message: "contraseña invalida" });
             console.log("contrasena invalida")
         }  
     }
 };
+
 
 // actualizar datos de usuario 
 const actualizardatos = async (req, res) => {
@@ -95,7 +96,7 @@ const actualizardatos = async (req, res) => {
         const { nombre, correo, direccion ,  ciudad, telefono } = req.body;
     
         if (nombre === undefined || correo === undefined || direccion === undefined || ciudad === undefined || telefono === undefined) {
-            res.status(400).json({ message: "Bad Request. Please fill all field." });
+            res.status(400).json({ message: "por favor ingrese los campos correspondientes." });
         }
     
         const datos = { nombre, correo, direccion , ciudad, telefono };
@@ -107,10 +108,9 @@ const actualizardatos = async (req, res) => {
         res.status(500);
         res.send(error.message);
     }
-    };
+};
     
-
-
+// exportar metodos
 export const methods = {
     getAll,
     add,

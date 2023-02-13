@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { LoginI } from '../../models/login.interface';
 import jtw_decode from "jwt-decode";
+import { Token } from '@angular/compiler';
 
 
 @Component({
@@ -54,6 +55,7 @@ export class LoginComponent implements OnInit {
       this.fallido();
     });
   };
+
 
   exitoso(){
     Swal.fire({

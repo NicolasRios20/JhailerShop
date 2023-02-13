@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 import { AppRoutingModule } from './app-routing.module';
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { ImgCarritoComponent } from '../app/componentes/imgcarrito/imgcarrito.co
 import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
+import { from } from 'rxjs';
 
 
 
@@ -51,7 +53,7 @@ import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/a
     FormsModule,
     routing
   ],
-  providers: [appRoutingProvider],
+  providers: [appRoutingProvider,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

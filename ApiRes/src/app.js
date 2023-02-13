@@ -4,6 +4,7 @@ import morgan from "morgan";
 import productoRoutes from "./routes/products.routes";
 import usersRoutes from "./routes/usuarios.routes";
 import categoriasRoutes from "./routes/categorias.routes";
+import proveedorRoutes from "./routes/proveedor.routes";
 import fileUpload from "express-fileupload";
 const app = express();
 
@@ -25,5 +26,6 @@ app.use(express.json());
 app.use("/api/producto", productoRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/categorias", categoriasRoutes);
+app.use("/api/proveedor", proveedorRoutes);
 
 export default app;

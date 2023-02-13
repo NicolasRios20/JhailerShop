@@ -63,7 +63,6 @@ const updateById = async (req, res) => {
         if (id === undefined || nombre === undefined || apellido === undefined) {
             res.status(400).json({ message: "Bad Request. Please fill all field." });
         }
-
         const datos = { nombre, apellido };
         const connection = await getConnection();
         const result = await connection.query("UPDATE productos SET ? WHERE id = ?", datos);

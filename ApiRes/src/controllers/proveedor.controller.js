@@ -4,12 +4,12 @@ import { getConnection } from "../database/database";
 const add = async (req, res) => {
     
     try {
-        const { nombre_proveedor, ubicacion_p, cuenta_bancaria, cedula} = req.body;
+        const { nombre_proveedor, ubicacion_p, cedula, cuenta_bancaria} = req.body;
         
-        if(nombre_proveedor === undefined || ubicacion_p === undefined || cuenta_bancaria === undefined || cedula === undefined ) {
+        if(!nombre_proveedor || !ubicacion_p || !cedula || !cuenta_bancaria ) {
             res.status(400).json({ message: "Bad Request. Please fill all field." });
         }else{
-            const dato = {cedula, nombre_proveedor, ubicacion_p, cedula};
+            const dato = {cedula, nombre_proveedor, ubicacion_p, cuenta_bancaria};
             console.log(dato)
             const connection = await getConnection();
             await connection.query(`INSERT INTO proveedor SET ?`, dato);

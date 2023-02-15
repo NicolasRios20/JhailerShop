@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="abs-center">
         
-                    <form  [formGroup]="formulario" (ngSubmit)="crearProducto(formulario.value)">
+                    <form  [formGroup]="formulario" (ngSubmit)="crearProveedor(formulario.value)">
         
                         <h2 class=" text-center" style="font-family: JuliusSansOne">Subir Producto</h2>
 
@@ -18,7 +18,14 @@
                         </div>
 
                         <div class="group">
-                            <input type="text" id="InputPrecio" required formControlName="ubicacion">
+                            <input type="text" id="InputPrecio" required formControlName="cedula">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Cedula</label>
+                        </div>
+
+                        <div class="group">
+                            <input type="text" id="InputPrecio" required formControlName="ubicacion_p">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <label>Ubicacion</label>

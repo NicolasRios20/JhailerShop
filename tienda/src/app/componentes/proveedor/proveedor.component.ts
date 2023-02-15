@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ProveedorService } from '../../services/proveedor.service';
+import { Proveedor } from '../../models/proveedor.interface';
 
 @Component({
   selector: 'app-proveedor',
@@ -7,22 +9,32 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./proveedor.component.css']
 })
 export class ProveedorComponent implements OnInit {
+  
+  proveedor: Proveedor[] = []
 
-  constructor() { }
+  constructor(
+    private proveedorService: ProveedorService
+  ) { }
 
   ngOnInit(): void {
   }
 
   formulario = new FormGroup({
     nombre_proveedor: new FormControl('', [Validators.required]),
-    ubicacion: new FormControl('', [Validators.required]),
+    cedula: new FormControl('', [Validators.required]),
+    ubicacion_p: new FormControl('', [Validators.required]),
     cuenta_bancaria: new FormControl('', [Validators.required]),
   });
 
-  crearProducto(form: any){
-
-    console.log(form);
-    
+  crearProveedor(form: any){
+    this.proveedor = form;
+    this.proveedorService.createProveedor(form)
+    .subscribe(data => {
+      console.log(data)
+      alert("hola " + "Registro Exitoso");
+    },error =>{
+      console.log(error.status)
+    });
   }
 
 }

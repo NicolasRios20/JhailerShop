@@ -4,18 +4,17 @@ import { getConnection } from "../database/database";
 const add = async (req, res) => {
     
     try {
-        const { nombre_proveedor, ubicacion_p, cuenta_bancaria} = req.body;
-    
-        if(nombre_proveedor === undefined || ubicacion_p === undefined || cuenta_bancaria === undefined ) {
+        const { nombre_proveedor, ubicacion_p, cuenta_bancaria, cedula} = req.body;
+        
+        if(nombre_proveedor === undefined || ubicacion_p === undefined || cuenta_bancaria === undefined || cedula === undefined ) {
             res.status(400).json({ message: "Bad Request. Please fill all field." });
         }else{
-
-            let dato = {nombre_proveedor, ubicacion_p, cuenta_bancaria};
-            const connection = await getConnection();
+            const dato = {cedula, nombre_proveedor, ubicacion_p, cedula};
             console.log(dato)
+            const connection = await getConnection();
             await connection.query(`INSERT INTO proveedor SET ?`, dato);
             res.json( dato );
-    
+
         }
     } catch (error) {
         res.status(500);

@@ -44,6 +44,6 @@ export class TaskService {
   }
   actualizarUsuario(id: any){
     const token = localStorage.getItem('token')
-    return this.http.get<[datosUsuario]>(`${this.api}${id}`,{headers :{'Authorization' : `Bearer ${token}`}});
+    return this.http.get<[datosUsuario]>(`${this.api}${id}`,/*{headers :{'Authorization' : `Bearer ${token}`}}*/);
   }
 }

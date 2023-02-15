@@ -1,10 +1,12 @@
 import { json, Router } from "express";
 import { methods as usuariosController } from "../controllers/usuarios.controller";
-var jwt = require('jsonwebtoken')
+import very from "./verificarToken";
+//var jwt = require('jsonwebtoken')
+
 
 const router = Router();
 
-router.get("/:id_cliente", verificarToken, usuariosController.getAll);
+router.get("/:id_cliente", very, usuariosController.getAll);
 router.get("/", usuariosController.getodos);
 router.post("/", usuariosController.add);
 router.post('/email', usuariosController.verificaruser);
@@ -13,7 +15,7 @@ router.put("/:id_cliente",  usuariosController.actualizardatos);
 
 
 
-function verificarToken(req, res, next) {
+/*export function verificarToken(req, res, next) {
     const token = req.headers.authorization;
     console.log("token" , token);
     if (token) {
@@ -32,7 +34,7 @@ function verificarToken(req, res, next) {
     } else {
         res.sendStatus(403);
     }
-}
+}*/
 
 
 export default router

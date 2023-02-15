@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 import { AppRoutingModule } from './app-routing.module';
-import { CookieService } from 'ngx-cookie-service';
+
 
 
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
+import { InterceptorService } from './interceptors/interceptor.service';
 
 
 
@@ -52,9 +53,13 @@ import { ProveedorComponent } from './componentes/proveedor/proveedor.component'
     SwiperModule,
     ReactiveFormsModule,
     FormsModule,
-    routing
+    routing,
   ],
-  providers: [appRoutingProvider,CookieService],
+  providers: [appRoutingProvider,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

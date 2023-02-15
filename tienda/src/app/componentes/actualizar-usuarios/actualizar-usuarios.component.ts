@@ -20,7 +20,9 @@ export class ActualizarUsuariosComponent implements OnInit {
     .subscribe(data => {
         this.usuario = data;
         console.log(this.usuario)
-    })
+    },error =>{
+
+    });
   }
 
 }

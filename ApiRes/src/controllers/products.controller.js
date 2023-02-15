@@ -38,10 +38,10 @@ const add = async (req, res) => {
         }else{
             const imagen_producto = req.files.file;
             const nombre_imagen = new Date().getTime()+'.png'
-            imagen_producto.mv('./uploads/'+nombre_imagen);
             const connection = await getConnection();
             const record = await connection.query(`call crear_producto('${nombre_producto}',${cantidad},${precio_producto},${id_categoria},'http://localhost:5000/${nombre_imagen}','${descripcion}')`);
             if(record.protocol41 == true){
+                imagen_producto.mv('./uploads/'+nombre_imagen);
                 const connection = await getConnection();
                 const result = await connection.query(`SELECT * FROM productos WHERE imagen = 'http://localhost:5000/${nombre_imagen}'`);
                 const datos = result.shift(0);

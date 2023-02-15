@@ -16,10 +16,13 @@
             Categorias
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Madera</a></li>
-            <li><a class="dropdown-item" href="#">Lana</a></li>
-            <li><a class="dropdown-item" href="#">Bambu</a></li>
-            <li><a class="dropdown-item" href="#">Barro</a></li>
+            <table>
+              <tr *ngFor="let item of categoria" >
+                <td>
+                  <a href="#"><label for="text">{{item.nombre_categoria}}</label></a>
+                </td>
+              </tr>
+            </table>
           </ul>
         </li>
       </ul>

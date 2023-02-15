@@ -81,6 +81,9 @@ export class CrearProductoComponent implements OnInit {
     this.formulario.reset();
     this.valorId_categoria = 0;
     this.producCreat.imagen = "";
+    this.producCreat.nombre_producto = "";
+    this.producCreat.precio_producto = 0;
+    this.producCreat.descripcion = "";
   }
 
   crearProducto(form: any){
@@ -98,6 +101,7 @@ export class CrearProductoComponent implements OnInit {
       this.productos.unshift(data);
       alert("Registro Exitoso");
     },error =>{
+      
       alert("Ocurrio un Error por favor Verificar los Campos");
     });
     

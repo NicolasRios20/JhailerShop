@@ -55,11 +55,9 @@
                                         <label>cantidad</label>
                                     </div>
                                     <div>
-                                        <label for="lang">Lenguaje</label>
-                                        <select formControlName="id_categoria" (change)="idCatecoria($event)">
+                                        <select id="lang" formControlName="id_categoria" (change)="idCatecoria($event)">
                                             <option *ngFor="let item of categoria ">{{item.nombre_categoria}}</option>
                                         </select>
-                            
                                     </div>
                                     <!--
                                     <div class="group">

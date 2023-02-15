@@ -68,7 +68,7 @@ const verificaruser= async (req, res) => {
                         res.status(400).send({message: 'contraseña invalida'})
                     } else {
 
-                        jwt.sign({id,rol}, 'secret_key', (err,token)=>{
+                        jwt.sign({id, rol}, 'secre',{expiresIn: '1800s'}, (err,token)=>{
                             if(err) {
                                 console.log(err);
                             }else {
@@ -103,18 +103,45 @@ const actualizardatos = async (req, res) => {
         console.log(datos)
         const connection = await getConnection();
         const result = await connection.query("UPDATE cliente SET ? WHERE id_cliente = ?", [datos,id_cliente]);
-        res.json(result);
+        res.json(result,  'hola');
+
     } catch (error) {
         res.status(500);
         res.send(error.message);
     }
 };
+
+/*function verificarToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+
+    if (typeof bearerHeader !== 'undefined') {
+        const bearerToken = bearerHeader.split(" ")[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.sendStatus(403);
+    }
+}*/
+
+const getodos = async (req, res) => {
+    try {
+        const {} = req.params;
+        const connection = await getConnection();
+        const data= await connection.query("SELECT * FROM cliente");
+        res.json(data);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
     
 // exportar metodos
 export const methods = {
     getAll,
     add,
     verificaruser,
+    getodos,
     actualizardatos
 };
 

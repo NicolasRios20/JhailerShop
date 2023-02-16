@@ -13,24 +13,39 @@
             </section>
         </section>
 
-        <form action="" class="form_contact">
+        <form [formGroup]="formulario" (ngSubmit)="actualizarUser(formulario.value)">
             <h2>Envia un mensaje</h2>
             <div class="user_info">
-                <label for="names">Nombres *</label>
-                <input type="text" id="names">
 
-                <label for="phone">Telefono / Celular</label>
-                <input type="text" id="phone">
+                <label for="nombre">Nombres *</label>
+                <input type="text" id="nombres" formControlName="nombre" value ="{{usuario.nombre}}">
 
-                <label for="email">Correo electronico *</label>
-                <input type="text" id="email">
+                <label for="correo">Correo electronico *</label>
+                <input type="text" id="correo" formControlName="correo" value ="{{usuario.correo}}">
 
-                <label for="mensaje">Mensaje *</label>
-                <textarea id="mensaje"></textarea>
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" formControlName="ciudad" value ="{{usuario.ciudad}}">
 
-                <input type="button" value="Enviar Mensaje" id="btnSend">
+                <label for="direccion">Direccion</label>
+                <input type="text" id="direccion" formControlName="direccion" value ="{{usuario.direccion}}">
+
+                <label for="telefono">Telefono / Celular</label>
+                <input type="text" id="telefono" formControlName="telefono" value ="{{usuario.telefono}}">
+
+
+                
+
+
+                <br>
+                <br>
+                <br>
+                
+
+
+                <button type="submit"  id="btnSend" value="actualizarUser()">enviar</button>
             </div>
         </form>
+
 
     </section>
 

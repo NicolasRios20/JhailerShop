@@ -68,7 +68,7 @@ const verificaruser= async (req, res) => {
                         res.status(400).send({message: 'contraseña invalida'})
                     } else {
 
-                        jwt.sign({id, rol}, 'secre',{expiresIn: '20s'}, (err,token)=>{
+                        jwt.sign({id, rol}, 'secre',{expiresIn: '60000s'}, (err,token)=>{
                             if(err) {
                                 console.log(err);
                             }else {

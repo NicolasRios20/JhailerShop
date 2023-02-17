@@ -12,9 +12,10 @@ import { datosUsuario } from 'src/app/models/task';
 export class ActualizarUsuariosComponent implements OnInit {
 
   constructor(private taskservice : TaskService) { }
+  id:any
   user: datosUsuario[]=[]
   usuario: datosUsuario = {
-    nombre: '' ,
+    nombre: '',
     correo: '',
     direccion: '',
     ciudad: '',
@@ -25,16 +26,25 @@ export class ActualizarUsuariosComponent implements OnInit {
   ngOnInit(): void {
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
-    let id = parseInt(iduser.id)
-    console.log("hola",id)
-    this.taskservice.actualizarUsuario(id)
+    this.id = parseInt(iduser.id)
+    console.log("hola",this.id)
+    this.taskservice.actualizarUsuario(this.id)
     .subscribe(data => {
       this.user = data
       this.usuario = this.user[0]
         console.log(this.usuario)
+        this.formulario.setValue({
+          nombre: this.usuario.nombre,
+          correo: this.usuario.correo,
+          ciudad: this.usuario.ciudad,
+          direccion: this.usuario.direccion,
+          telefono: this.usuario.telefono,
+          foto: this.usuario.foto
+        })
     },error =>{
 
     });
+    
   }
 
   formulario = new FormGroup({
@@ -43,12 +53,15 @@ export class ActualizarUsuariosComponent implements OnInit {
     ciudad: new FormControl('', [Validators.required]),
     direccion: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
-    id_categoria:new FormControl('',[Validators.required]),
+    foto: new FormControl('', [Validators.required]),
   });
 
-  actualizarUser(form:any){
-    
+  actualizarUser(form:any,){
+    this.taskservice.actualizar(form,this.id).subscribe(data =>{
+      console.log(data)
+    })
     console.log(form)
+    console.log(this.id)
   }
 
 }

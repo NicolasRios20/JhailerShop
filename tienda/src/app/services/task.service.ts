@@ -7,6 +7,7 @@ import { LoginI } from '../models/login.interface';
 
 
 import { datosUsuario, Task } from '../models/task';
+import { UrlHandlingStrategy } from '@angular/router';
 
 
 @Injectable({
@@ -44,7 +45,13 @@ export class TaskService {
   }
   actualizarUsuario(id: any){
     const token = localStorage.getItem('token')
-    return this.http.get<[datosUsuario]>(`${this.api}${id}`/*,{headers :{'Authorization' : `Bearer ${token}`}}*/);
+    return this.http.get<[datosUsuario]>(`${this.api}${id}`);
   }
 
+  actualizar(form: datosUsuario, id:any){
+    const path = `${this.api}${id}`
+    const token = localStorage.getItem('token')
+    return this.http.put<datosUsuario>(path,form)
+  }
+  
 }

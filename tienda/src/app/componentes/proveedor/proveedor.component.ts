@@ -30,10 +30,13 @@ export class ProveedorComponent implements OnInit {
     this.proveedor = form;
     this.proveedorService.createProveedor(form)
     .subscribe(data => {
-      console.log(data)
-      alert("hola " + "Registro Exitoso");
+      alert("Registro Exitoso")
     },error =>{
-      console.log(error.status)
+      if(error.status == 400){
+        alert("Verificar Campos")
+      }else if(error.status == 500){
+        alert("El Usuario ya Existe");
+      }
     });
   }
 

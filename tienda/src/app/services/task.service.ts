@@ -53,5 +53,10 @@ export class TaskService {
     const token = localStorage.getItem('token')
     return this.http.put<datosUsuario>(path,form)
   }
+
+  elimnar(id: any){
+    localStorage.clear()
+    return this.http.delete(`${this.api}${id}`);
+  }
   
 }

@@ -10,6 +10,7 @@ import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/a
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 
 
+
 const appRoutes:Routes =[
 
     {path:'productos', component:ProductosComponent},

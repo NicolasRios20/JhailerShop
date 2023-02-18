@@ -94,34 +94,35 @@ const actualizardatos = async (req, res) => {
     try {
         const { id_cliente } = req.params;
         const { nombre, correo, direccion ,  ciudad, telefono } = req.body;
-    
         if (nombre === undefined || correo === undefined || direccion === undefined || ciudad === undefined || telefono === undefined) {
             res.status(400).json({ message: "por favor ingrese los campos correspondientes." });
         }
-    
         const datos = { nombre, correo, direccion , ciudad, telefono };
         console.log(datos)
         const connection = await getConnection();
         const result = await connection.query("UPDATE cliente SET ? WHERE id_cliente = ?", [datos,id_cliente]);
-        res.json(result,  'hola');
+        console.log(result, "holllaaaaaaaaaaaaa")
+        res.json(result);
 
+    } catch (error) {
+        res.send(error.message);
+    }
+};
+
+const eliminarUsuario = async (req, res) => {
+
+    try {
+        const { id_cliente } = req.params;
+        const connection = await getConnection();
+        const result = await connection.query("DELETE FROM cliente WHERE id_cliente = ?", [id_cliente]);
+        res.json("usuario elimidado correctamente");
     } catch (error) {
         res.status(500);
         res.send(error.message);
     }
 };
 
-/*function verificarToken(req, res, next) {
-    const bearerHeader = req.headers['authorization'];
 
-    if (typeof bearerHeader !== 'undefined') {
-        const bearerToken = bearerHeader.split(" ")[1];
-        req.token = bearerToken;
-        next();
-    } else {
-        res.sendStatus(403);
-    }
-}*/
 
 const getodos = async (req, res) => {
     try {
@@ -142,7 +143,8 @@ export const methods = {
     add,
     verificaruser,
     getodos,
-    actualizardatos
+    actualizardatos,
+    eliminarUsuario
 };
 
 

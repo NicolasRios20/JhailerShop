@@ -3,6 +3,7 @@ import { TaskService } from 'src/app/services/task.service';
 import jtw_decode from "jwt-decode";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { datosUsuario } from 'src/app/models/task';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-actualizar-usuarios',
@@ -14,7 +15,7 @@ export class ActualizarUsuariosComponent implements OnInit {
   constructor(private taskservice : TaskService) { }
   id:any
   user: datosUsuario[]=[]
-  usuario: datosUsuario = {
+  /*usuario: datosUsuario = {
     nombre: '',
     correo: '',
     direccion: '',
@@ -22,7 +23,7 @@ export class ActualizarUsuariosComponent implements OnInit {
     telefono: '',
     foto: '',
     rol: ''
-  }
+  }*/
   ngOnInit(): void {
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
@@ -31,22 +32,19 @@ export class ActualizarUsuariosComponent implements OnInit {
     this.taskservice.actualizarUsuario(this.id)
     .subscribe(data => {
       this.user = data
-      this.usuario = this.user[0]
-        console.log(this.usuario)
         this.formulario.setValue({
-          nombre: this.usuario.nombre,
-          correo: this.usuario.correo,
-          ciudad: this.usuario.ciudad,
-          direccion: this.usuario.direccion,
-          telefono: this.usuario.telefono,
-          foto: this.usuario.foto
+          nombre: this.user[0].nombre,
+          correo: this.user[0].correo,
+          ciudad: this.user[0].ciudad,
+          direccion: this.user[0].direccion,
+          telefono: this.user[0].telefono,
+          foto: this.user[0].foto
         })
     },error =>{
-
+      alert("Ocurrio un Error por favor Verificar los Campos");
     });
     
   }
-
   formulario = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required]),
@@ -60,8 +58,14 @@ export class ActualizarUsuariosComponent implements OnInit {
     this.taskservice.actualizar(form,this.id).subscribe(data =>{
       console.log(data)
     })
-    console.log(form)
-    console.log(this.id)
+  }
+
+  eliminar():void{
+
+    this.taskservice.elimnar(this.id).subscribe(data =>{
+      localStorage.clear()
+      console.log('elimidado', this.id)
+    })
   }
 
 }

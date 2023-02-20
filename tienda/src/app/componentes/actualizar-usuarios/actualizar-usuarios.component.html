@@ -21,6 +21,7 @@
            
             
         </div>
+        <input type="file" id="file" (change)="imagenFile($event)">
         <div class="perfil-usuario-footer">
             <form [formGroup]="formulario" (ngSubmit)="actualizarUser(formulario.value)">
                 

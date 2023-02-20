@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { datosUsuario } from 'src/app/models/task';
 import { Token } from '@angular/compiler';
 
+
 @Component({
   selector: 'app-actualizar-usuarios',
   templateUrl: './actualizar-usuarios.component.html',
@@ -15,15 +16,6 @@ export class ActualizarUsuariosComponent implements OnInit {
   constructor(private taskservice : TaskService) { }
   id:any
   user: datosUsuario[]=[]
-  /*usuario: datosUsuario = {
-    nombre: '',
-    correo: '',
-    direccion: '',
-    ciudad: '',
-    telefono: '',
-    foto: '',
-    rol: ''
-  }*/
   ngOnInit(): void {
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
@@ -55,6 +47,7 @@ export class ActualizarUsuariosComponent implements OnInit {
   });
 
   actualizarUser(form:any,){
+    const formData = new FormData()
     this.taskservice.actualizar(form,this.id).subscribe(data =>{
       console.log(data)
     })
@@ -65,6 +58,13 @@ export class ActualizarUsuariosComponent implements OnInit {
     this.taskservice.elimnar(this.id).subscribe(data =>{
       localStorage.clear()
       console.log('elimidado', this.id)
+    })
+  }
+
+  imagenFile(event:any){
+    let file = event.target.files[0]
+    this.formulario.patchValue({
+      foto: file
     })
   }
 

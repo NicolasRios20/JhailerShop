@@ -5,9 +5,15 @@
         <div class="perfil-usuario-portada">
             <div class="perfil-usuario-avatar">
                 <img src="https://i.pinimg.com/564x/fc/fe/fa/fcfefa10a7e9e3d0c94f306a6c0ed009.jpg" alt="img-avatar">
-                <button type="button" class="boton-avatar">
-                    <i class="far fa-image"></i>
+                <button class="boton-avatar">
+                    <label for="file-input">
+                        <i class="far fa-image"></i>
+                    </label>
+                    <input id="file-input" style="display: none;" type="file"/>
                 </button>
+                <!----<i class="far fa-image"></i>
+                <input id="file-input" type="file" style="display: none;" multiple>-->
+                
             </div>
             <button class="boton-portada " type="submit"  id="eliminar" (click)="eliminar()">Eliminar cuenta</button>
             
@@ -25,21 +31,21 @@
             <form [formGroup]="formulario" (ngSubmit)="actualizarUser(formulario.value)">
                 
                 <div class="user_info p-4" style="display: flex; flex-direction: column; align-items: center; ">
-                    <label for="exampleDataList" class="form-label" style="margin-right: 60%;">Nombre</label>
+                    <label for="nombre" class="form-label" style="margin-right: 60%;">Nombre</label>
                     <input type="text" id="nombres" formControlName="nombre" class="form-control " style="width: 70%;" >
     
-                    <label for="exampleDataList" class="form-label pt-3" style="margin-right: 62%;">Correo</label>
+                    <label for="correo" class="form-label pt-3" style="margin-right: 62%;">Correo</label>
                     <input type="text" id="correo" formControlName="correo" class="form-control" style="width: 70%;" >
                     
     
-                    <label for="exampleDataList" class="form-label pt-3" style="margin-right: 62%;">Ciudad</label>
+                    <label for="ciudad" class="form-label pt-3" style="margin-right: 62%;">Ciudad</label>
                     <input type="text" id="ciudad" formControlName="ciudad"  class="form-control" style="width: 70%;" >
                     
     
-                    <label for="exampleDataList" class="form-label pt-3" style="margin-right: 60%;">Direccion</label>
+                    <label for="direccion" class="form-label pt-3" style="margin-right: 60%;">Direccion</label>
                     <input type="text" id="direccion" formControlName="direccion" class="form-control" style="width: 70%;" >
                     
-                    <label for="exampleDataList" class="form-label pt-3" style="margin-right: 50%;">Telefono / Celular</label>
+                    <label for="telefono" class="form-label pt-3" style="margin-right: 50%;">Telefono / Celular</label>
                     <input type="text" id="telefono" formControlName="telefono" class="form-control " style="width: 70%;" >
 
                     <button type="submit" class="btn  btn-outline-light mt-3  " style="background: #177987; width: 30%; height: 35px;" id="btnSend" value="actualizarUser()">Guardar</button>

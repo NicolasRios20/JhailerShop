@@ -89,6 +89,7 @@ export class CrearProductoComponent implements OnInit {
   crearProducto(form: any){
     const formData = new FormData();
     const file = this.formulario.get('fileSource');
+    
     formData.append('file', file?.value || '');
     formData.append('cantidad', this.formulario.get('cantidad')?.value || '');
     formData.append('nombre_producto', this.formulario.get('nombre_producto')?.value || '');

@@ -19,7 +19,7 @@ const appRoutes:Routes =[
     {path:'registro', component:RegistroComponent},
     {path:'login', component:LoginComponent},
     {path:'proveedor', component:ProveedorComponent},
-    {path:'editaruser', component:ActualizarUsuariosComponent},
+    {path:'perfil-usuario', component:ActualizarUsuariosComponent},
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 
 ];

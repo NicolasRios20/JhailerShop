@@ -12,6 +12,7 @@ import { Token } from '@angular/compiler';
   styleUrls: ['./actualizar-usuarios.component.css']
 })
 export class ActualizarUsuariosComponent implements OnInit {
+  foto: any;
 
   constructor(private taskservice : TaskService) { }
   id:any
@@ -20,7 +21,7 @@ export class ActualizarUsuariosComponent implements OnInit {
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
     this.id = parseInt(iduser.id)
-    console.log("hola",this.id)
+    console.log(this.id)
     this.taskservice.actualizarUsuario(this.id)
     .subscribe(data => {
       this.user = data
@@ -35,6 +36,7 @@ export class ActualizarUsuariosComponent implements OnInit {
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos");
     });
+
     
   }
   formulario = new FormGroup({
@@ -46,10 +48,21 @@ export class ActualizarUsuariosComponent implements OnInit {
     foto: new FormControl('', [Validators.required]),
   });
 
-  actualizarUser(form:any,){
+  actualizarUser(form:any){
+    this.imagenFile(event)
     const formData = new FormData()
-    this.taskservice.actualizar(form,this.id).subscribe(data =>{
+    const file = this.formulario.get('foto')
+    formData.append('nombre',this.formulario.get('nombre')?.value || '');
+    formData.append('correo',this.formulario.get('correo')?.value || '');
+    formData.append('ciudad', this.formulario.get('ciudad')?.value || '');
+    formData.append('direccion', this.formulario.get('direccion')?.value || '');
+    formData.append('telefono', this.formulario.get('telefono')?.value || '');
+    let a= formData.append('foto', file?.value || '');
+    console.log(a, 'holaaaa')
+
+    this.taskservice.actualizar(formData,this.id).subscribe(data =>{
       console.log(data)
+
     })
   }
 
@@ -62,11 +75,17 @@ export class ActualizarUsuariosComponent implements OnInit {
   }
 
   imagenFile(event:any){
-    let file = event.target.files[0]
-    this.formulario.patchValue({
-      foto: file
-    })
+    if (event.target.files[0].length > 0) {
+      const file = event.target.files[0]
+      this.formulario.patchValue({
+        foto: file
+      })
+    }
+    
+
   }
+
+  
 
 }
 

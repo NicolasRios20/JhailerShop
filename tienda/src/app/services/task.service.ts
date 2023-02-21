@@ -48,7 +48,7 @@ export class TaskService {
     return this.http.get<[datosUsuario]>(`${this.api}${id}`);
   }
 
-  actualizar(form: datosUsuario, id:any){
+  actualizar(form: any, id:any){
     const path = `${this.api}${id}`
     const token = localStorage.getItem('token')
     return this.http.put<datosUsuario>(path,form)

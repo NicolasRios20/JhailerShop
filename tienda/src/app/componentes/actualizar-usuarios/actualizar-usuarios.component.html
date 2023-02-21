@@ -1,6 +1,7 @@
 
 <app-nav></app-nav>
-<section class="seccion-perfil-usuario">
+<section class="seccion-perfil-usuario" >
+    
     <div class="perfil-usuario-header">
         <div class="perfil-usuario-portada">
             <div class="perfil-usuario-avatar">
@@ -27,7 +28,6 @@
            
             
         </div>
-        <input type="file" id="file" (change)="imagenFile($event)">
         <div class="perfil-usuario-footer">
             <form [formGroup]="formulario" (ngSubmit)="actualizarUser(formulario.value)">
                 

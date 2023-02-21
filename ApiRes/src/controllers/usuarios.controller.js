@@ -93,15 +93,14 @@ const actualizardatos = async (req, res) => {
 
     try {
         const { id_cliente } = req.params;
-        const { nombre, correo, direccion ,  ciudad, telefono } = req.body;
+        const { nombre, correo, direccion ,  ciudad, telefono, foto } = req.body;
         if (nombre === undefined || correo === undefined || direccion === undefined || ciudad === undefined || telefono === undefined) {
             res.status(400).json({ message: "por favor ingrese los campos correspondientes." });
         }
-        const datos = { nombre, correo, direccion , ciudad, telefono };
+        const datos = { nombre, correo, direccion , ciudad, telefono,foto };
         console.log(datos)
         const connection = await getConnection();
         const result = await connection.query("UPDATE cliente SET ? WHERE id_cliente = ?", [datos,id_cliente]);
-        console.log(result, "holllaaaaaaaaaaaaa")
         res.json(result);
 
     } catch (error) {

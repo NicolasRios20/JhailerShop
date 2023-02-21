@@ -29,7 +29,6 @@ export class TaskService {
 
 
   getAllTasks(){
-
     return this.http.get(this.api);
   }
 

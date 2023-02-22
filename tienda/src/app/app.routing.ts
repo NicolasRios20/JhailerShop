@@ -20,7 +20,7 @@ const appRoutes:Routes =[
     {path:'registro', component:RegistroComponent},
     {path:'login', component:LoginComponent},
     {path:'proveedor', component:ProveedorComponent,canActivate: [GuardRutasGuard]},
-    {path:'perfil-usuario', component:ActualizarUsuariosComponent, data: {role : '0'}, canActivate: [GuardRutasGuard]},
+    {path:'perfil-usuario', component:ActualizarUsuariosComponent, canActivate: [GuardRutasGuard]},
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 
 ];

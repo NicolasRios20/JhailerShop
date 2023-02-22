@@ -31,7 +31,8 @@ export class ActualizarUsuariosComponent implements OnInit {
           ciudad: this.user[0].ciudad,
           direccion: this.user[0].direccion,
           telefono: this.user[0].telefono,
-          foto: this.user[0].foto
+          file: this.user[0].foto,
+          fileSource: this.user[0].foto
         })
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos");
@@ -45,25 +46,36 @@ export class ActualizarUsuariosComponent implements OnInit {
     ciudad: new FormControl('', [Validators.required]),
     direccion: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
-    foto: new FormControl('', [Validators.required]),
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required]),
   });
 
   actualizarUser(form:any){
-    this.imagenFile(event)
     const formData = new FormData()
-    const file = this.formulario.get('foto')
+    const file = this.formulario.get('fileSource')
+    console.log('hola ',file)
     formData.append('nombre',this.formulario.get('nombre')?.value || '');
     formData.append('correo',this.formulario.get('correo')?.value || '');
     formData.append('ciudad', this.formulario.get('ciudad')?.value || '');
     formData.append('direccion', this.formulario.get('direccion')?.value || '');
     formData.append('telefono', this.formulario.get('telefono')?.value || '');
-    let a= formData.append('foto', file?.value || '');
-    console.log(a, 'holaaaa')
-
+    formData.append('file', file?.value || '');
+    console.log(formData)
     this.taskservice.actualizar(formData,this.id).subscribe(data =>{
       console.log(data)
-
     })
+  }
+
+
+
+  imagenFile(event:any){
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0]
+      this.formulario.patchValue({
+        fileSource: file
+      })
+    }
   }
 
   eliminar():void{
@@ -73,20 +85,6 @@ export class ActualizarUsuariosComponent implements OnInit {
       console.log('elimidado', this.id)
     })
   }
-
-  imagenFile(event:any){
-    if (event.target.files[0].length > 0) {
-      const file = event.target.files[0]
-      this.formulario.patchValue({
-        foto: file
-      })
-    }
-    
-
-  }
-
-  
-
 }
 
 

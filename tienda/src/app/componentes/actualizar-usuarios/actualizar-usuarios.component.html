@@ -5,7 +5,7 @@
     <div class="perfil-usuario-header">
         <div class="perfil-usuario-portada">
             <div class="perfil-usuario-avatar">
-                <img src="https://i.pinimg.com/564x/fc/fe/fa/fcfefa10a7e9e3d0c94f306a6c0ed009.jpg" alt="img-avatar">
+                <img src="{{this.user[0].foto}}" alt="img-avatar">
                 <button class="boton-avatar">
                     <label for="file-input">
                         <i class="far fa-image"></i>
@@ -48,6 +48,9 @@
                     
                     <label for="telefono" class="form-label pt-3" style="margin-right: 50%;">Telefono / Celular</label>
                     <input type="text" id="telefono" formControlName="telefono" class="form-control " style="width: 70%;" >
+
+                    <label for="file" class="form-label pt-3" style="margin-right: 50%;">foto</label>
+                    <input id="file"  type="file" formControlName="file"(change)="imagenFile($event)"/>
 
                     <button type="submit" class="btn  btn-outline-light mt-3  " style="background: #177987; width: 30%; height: 35px;" id="btnSend" value="actualizarUser()">Guardar</button>
        

@@ -90,20 +90,36 @@ const verificaruser= async (req, res) => {
 
 // actualizar datos de usuario 
 const actualizardatos = async (req, res) => {
-
+    
     try {
         const { id_cliente } = req.params;
-        const { nombre, correo, direccion ,  ciudad, telefono } = req.body;
+        const { nombre, correo, direccion ,  ciudad, telefono,file} = req.body;
         if (nombre === undefined || correo === undefined || direccion === undefined || ciudad === undefined || telefono === undefined) {
             res.status(400).json({ message: "por favor ingrese los campos correspondientes." });
         }
-        const datos = { nombre, correo, direccion , ciudad, telefono };
-        console.log(datos)
         const connection = await getConnection();
-        const result = await connection.query("UPDATE cliente SET ? WHERE id_cliente = ?", [datos,id_cliente]);
-        console.log(result, "holllaaaaaaaaaaaaa")
-        res.json(result);
+        let foto ;
+        let fotos ;
 
+        console.log(file, 'soy el file')
+        if (file === undefined) {
+            let nico = req.files.file
+            fotos = new Date().getTime()+'.png'
+            foto = `http://localhost:5000/usuarios/${fotos}`
+            const datos = { nombre, correo, direccion , ciudad, telefono,foto};
+            nico.mv('./uploads/usuarios/'+fotos);
+            const result = await connection.query("UPDATE cliente SET ? WHERE id_cliente = ?", [datos,id_cliente]);
+            res.json(result);
+            
+        }else{
+            console.log('hola')
+            const datos = { nombre, correo, direccion , ciudad, telefono};
+            console.log('no tengo foto')
+            const result = await connection.query("UPDATE cliente SET ? WHERE id_cliente = ?", [datos,id_cliente]);
+            res.json(result);
+        }
+
+        
     } catch (error) {
         res.send(error.message);
     }

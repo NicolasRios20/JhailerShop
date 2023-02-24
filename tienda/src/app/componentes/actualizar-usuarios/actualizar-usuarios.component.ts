@@ -5,30 +5,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { datosUsuario } from 'src/app/models/task';
 import { Token } from '@angular/compiler';
 
+
 @Component({
   selector: 'app-actualizar-usuarios',
   templateUrl: './actualizar-usuarios.component.html',
   styleUrls: ['./actualizar-usuarios.component.css']
 })
 export class ActualizarUsuariosComponent implements OnInit {
+  foto: any;
 
   constructor(private taskservice : TaskService) { }
   id:any
   user: datosUsuario[]=[]
-  /*usuario: datosUsuario = {
-    nombre: '',
-    correo: '',
-    direccion: '',
-    ciudad: '',
-    telefono: '',
-    foto: '',
-    rol: ''
-  }*/
   ngOnInit(): void {
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
     this.id = parseInt(iduser.id)
-    console.log("hola",this.id)
+    console.log(this.id)
     this.taskservice.actualizarUsuario(this.id)
     .subscribe(data => {
       this.user = data
@@ -38,11 +31,13 @@ export class ActualizarUsuariosComponent implements OnInit {
           ciudad: this.user[0].ciudad,
           direccion: this.user[0].direccion,
           telefono: this.user[0].telefono,
-          foto: this.user[0].foto
+          file: this.user[0].foto,
+          fileSource: this.user[0].foto
         })
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos");
     });
+
     
   }
   formulario = new FormGroup({
@@ -51,13 +46,36 @@ export class ActualizarUsuariosComponent implements OnInit {
     ciudad: new FormControl('', [Validators.required]),
     direccion: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
-    foto: new FormControl('', [Validators.required]),
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required]),
   });
 
-  actualizarUser(form:any,){
-    this.taskservice.actualizar(form,this.id).subscribe(data =>{
+  actualizarUser(form:any){
+    const formData = new FormData()
+    const file = this.formulario.get('fileSource')
+    console.log('hola ',file)
+    formData.append('nombre',this.formulario.get('nombre')?.value || '');
+    formData.append('correo',this.formulario.get('correo')?.value || '');
+    formData.append('ciudad', this.formulario.get('ciudad')?.value || '');
+    formData.append('direccion', this.formulario.get('direccion')?.value || '');
+    formData.append('telefono', this.formulario.get('telefono')?.value || '');
+    formData.append('file', file?.value || '');
+    console.log(formData)
+    this.taskservice.actualizar(formData,this.id).subscribe(data =>{
       console.log(data)
     })
+  }
+
+
+
+  imagenFile(event:any){
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0]
+      this.formulario.patchValue({
+        fileSource: file
+      })
+    }
   }
 
   eliminar():void{
@@ -67,7 +85,6 @@ export class ActualizarUsuariosComponent implements OnInit {
       console.log('elimidado', this.id)
     })
   }
-
 }
 
 

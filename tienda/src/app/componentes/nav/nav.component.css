@@ -1,3 +1,4 @@
+
 .foto{
   border-radius: 100%;
   width: 50px;
@@ -7,13 +8,15 @@
 #contenedorPerfil{
   display: flex;
   flex-direction: row;
-  gap: 20%;
+  gap: 10%;
+  margin: 0 0 0 15px;
 }
 
 /*Barra de busqueda*/
+
 .buscar {
   position: relative;
-  padding-inline-end: 30px;
+  padding: 5px;
 }
 
 .buscar input {
@@ -29,15 +32,17 @@
 }
 
 .btn {
-  line-height: 40px;
+  width: 48px;
+  height: 48px;
+  line-height: 45px;
   top: 0;
   right: 0;
-  margin: auto;
-  position: absolute;
+  position:absolute;
+  background: #fefdfe00;
   text-align: center;
-  color: rgb(12, 7, 7);
+  color: rgb(14, 13, 13);
   font-size: 18px;
-  border-radius: 40%;
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -48,8 +53,3 @@
 .buscar input:focus {
   width: 240px;
 }
-
-
-
-
-

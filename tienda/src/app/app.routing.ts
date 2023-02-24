@@ -15,12 +15,12 @@ import { GuardRutasGuard } from './guard/guard-rutas.guard';
 const appRoutes:Routes =[
 
     {path:'productos', component:ProductosComponent},
-    {path:'crear-producto', component:CrearProductoComponent},
+    {path:'crear-producto', component:CrearProductoComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
     {path:'carrito', component:CarritoComponent},
-    {path:'registro', component:RegistroComponent},
+    {path:'registro', component:RegistroComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},
     {path:'login', component:LoginComponent},
-    {path:'proveedor', component:ProveedorComponent,canActivate: [GuardRutasGuard]},
-    {path:'perfil-usuario', component:ActualizarUsuariosComponent, canActivate: [GuardRutasGuard]},
+    {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
+    {path:'perfil-usuario', component:ActualizarUsuariosComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 
 ];

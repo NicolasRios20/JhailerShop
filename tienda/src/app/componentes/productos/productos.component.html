@@ -1,9 +1,11 @@
 <app-nav></app-nav>
 <app-carrusel></app-carrusel>
-<div class="products--grip " style="display: flex; flex-wrap:wrap; justify-content: center; ">
+<div >
+<div class="products--grip " style="display: flex; flex-wrap:wrap; justify-content: center; margin-left: 10%; margin-right: 10%;">
     <app-producto [producto]="productos" 
         *ngFor="let productos of productos"
         (addedProduct)="onAddToShoppingCart($event)"
     ></app-producto>
+</div>
 </div>
 

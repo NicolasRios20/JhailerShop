@@ -11,16 +11,17 @@ import jtw_decode from "jwt-decode";
 export class NavComponent implements OnInit {
   categoria: Categoria[] = [];
   imagen: any;
+  login: any;
   constructor(
     private categoriasService: CategoriasService,
   ) { }
 
   ngOnInit(): void {
+    this.botonLogin();
     this.categoriasService.getAll()
     .subscribe(data => {
         this.categoria = data;
     })
-
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
     this.imagen = iduser.foto
@@ -32,6 +33,16 @@ export class NavComponent implements OnInit {
 
   cerrarSesion(){
     localStorage.clear();
+  }
+
+  botonLogin(){
+    if(localStorage.getItem('token')){
+      let datoToken: any = localStorage.getItem('token');
+      let iduser: any = jtw_decode(datoToken)
+      this.login = null;
+    }else{
+      this.login = '';
+    }
   }
 
 }

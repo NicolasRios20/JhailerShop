@@ -23,6 +23,11 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 import { InterceptorService } from './interceptors/interceptor.service';
+<<<<<<< HEAD
+import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
+=======
+import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.component';
+>>>>>>> 75f46049c65d8b12b16387826c35887d75616ac7
 
 
 
@@ -43,6 +48,11 @@ import { InterceptorService } from './interceptors/interceptor.service';
     FooterComponent,
     ActualizarUsuariosComponent,
     ProveedorComponent,
+<<<<<<< HEAD
+    FacturaProveedorComponent,
+=======
+    NavAdmiComponent,
+>>>>>>> 75f46049c65d8b12b16387826c35887d75616ac7
 
    
   ],

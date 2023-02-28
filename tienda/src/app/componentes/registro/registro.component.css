@@ -16,7 +16,7 @@
 
 .registro{
     width: 60vh;
-    height: 60vh;
+    height: 78vh;
     background: rgba(196, 196, 196, 0.63);
     border-radius:9px;
     display: flex;
@@ -141,10 +141,7 @@ input:focus ~ .highlight {
   height: 15px;
 }
 
-.botones{
-    display: flex;
-    gap: 10;
-}
+
 
 
   /* ANIMATIONS ================ */

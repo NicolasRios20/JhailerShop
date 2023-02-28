@@ -4,5 +4,6 @@ import { methods as proveedorController } from "../controllers/proveedor.control
 const router = Router();
 
 router.post("/", proveedorController.add);//creacion de proveedor
+router.get("/", proveedorController.getproveedores);
 
 export default router;

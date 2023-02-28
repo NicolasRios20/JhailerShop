@@ -1,4 +1,11 @@
-<app-nav></app-nav>
+<div *ngIf = "usuario == 0; else login ">
+    <app-nav> </app-nav>
+</div>
+
+<ng-template #login>
+    <app-nav-admi></app-nav-admi>
+</ng-template >
+
 <app-carrusel></app-carrusel>
 <div class="products--grip " style="display: flex; flex-wrap:wrap; justify-content: center; ">
     <app-producto [producto]="productos" 

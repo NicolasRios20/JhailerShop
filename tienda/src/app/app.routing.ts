@@ -9,6 +9,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 import { GuardRutasGuard } from './guard/guardsCanActivate/guard-rutas.guard';
+import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.component';
 
 
 
@@ -19,6 +20,7 @@ const appRoutes:Routes =[
     {path:'login', component:LoginComponent },
     {path:'productos', component:ProductosComponent},
     {path:'carrito', component:CarritoComponent},
+    {path:'nav', component:NavAdmiComponent},
     
     //rutas del aministrador
     {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},

@@ -5,15 +5,15 @@
     <div class="perfil-usuario-header">
         <div class="perfil-usuario-portada">
             <div class="perfil-usuario-avatar">
+                <img class="img-responsive img-circle" src="{{this.user[0].foto}}" alt="img-avatar">
+                <!--<button class="boton-avatar">
                 <img src="{{this.user[0].foto}}" alt="img-avatar">
                 <button class="boton-avatar">
                     <label for="file-input">
                         <i class="far fa-image"></i>
                     </label>
                     <input id="file-input" style="display: none;" type="file"/>
-                </button>
-                <!----<i class="far fa-image"></i>
-                <input id="file-input" type="file" style="display: none;" multiple>-->
+                </button>-->
                 
             </div>
             <button class="boton-portada " type="submit"  id="eliminar" (click)="eliminar()">Eliminar cuenta</button>

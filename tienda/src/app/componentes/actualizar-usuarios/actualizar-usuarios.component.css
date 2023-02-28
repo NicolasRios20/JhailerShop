@@ -74,9 +74,10 @@ Copiar esto
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar {
-    display: flex;
+    /* display: flex; */
     width: 180px;
     height: 180px;
+    overflow: hidden;
     align-items: center;
     justify-content: center;
     border: 7px solid #FFFFFF;
@@ -92,7 +93,6 @@ Copiar esto
 .seccion-perfil-usuario .perfil-usuario-avatar img {
     width: 100%;
     position: relative;
-    border-radius: 50%;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {

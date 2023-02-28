@@ -16,7 +16,7 @@ main{
 }
 .login{
     width: 60vh;
-    height: 60vh;
+    height: 68vh;
     background: rgba(196, 196, 196, 0.63);
     border-radius:9px;
     display: flex;

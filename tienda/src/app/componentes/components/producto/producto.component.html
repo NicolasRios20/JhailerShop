@@ -1,33 +1,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet">
-<!--
-<app-img  *ngIf="producto.image" [img]="producto.image"></app-img>
-<h2>{{producto.price | currency:'COP'}}</h2>
-<p>{{producto.name}}</p>
-<button (click)="onAddTocart()">agregar al carrito de compras</button>
--->
 
 
-<!--
-<div class="group_tarjeta">
-    <div class="producto">
-      <app-img  *ngIf="producto.imagen" [img]="producto.imagen"></app-img>
-      <div>
-        <h5 class="price_product">{{producto.precio_producto}}</h5>
-        <h5 class="name_product">{{producto.nombre_producto}}</h5>
-      </div>
-
-      <div class="area_text">
-        <p class="group_text" name="descrip" id="Description" cols="30" rows="10">{{producto.descripcion}}</p>
-      </div>
-      <a (click)="onAddTocart()" class="">agregar</a>
-
-    </div>
-  </div>
--->
-
-<div class="card my-5 " style="width: 18rem; ">
+<div class="card my-5 " style="width: 20rem; ">
   <app-img class="card-img-top" style="object-fit: cover;" *ngIf="producto.imagen" [img]="producto.imagen"></app-img>
   <div class="card-body">
     <h3 class="card-title" style="font-family: 'Labrada', serif;">{{producto.nombre_producto}}</h3>

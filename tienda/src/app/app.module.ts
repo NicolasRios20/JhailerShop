@@ -23,6 +23,7 @@ import { FooterComponent } from './componentes/footer/footer.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 import { InterceptorService } from './interceptors/interceptor.service';
+import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
 
 
 
@@ -43,6 +44,7 @@ import { InterceptorService } from './interceptors/interceptor.service';
     FooterComponent,
     ActualizarUsuariosComponent,
     ProveedorComponent,
+    FacturaProveedorComponent,
 
    
   ],

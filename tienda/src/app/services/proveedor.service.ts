@@ -8,6 +8,7 @@ import { Proveedor } from '../models/proveedor.interface';
 export class ProveedorService {
 
   url = '/api/proveedor/';
+  factura = '/api/facturaProveedor/';
 
   constructor(
     private http: HttpClient,
@@ -16,6 +17,12 @@ export class ProveedorService {
   createProveedor(data: any){
     return this.http.post<Proveedor>(this.url,data);
   }
+  getproveedores(){
+    return this.http.get<Proveedor[]>(this.url);
+  }
 
+  numeroFactura(){
+    return this.http.get<any>(this.factura);
+  }
 
 }

@@ -22,6 +22,19 @@ const add = async (req, res) => {
     }
 };
 
+const getproveedores = async (req, res) => {
+    try {
+        const {} = req.params;
+        const connection = await getConnection();
+        const data= await connection.query("SELECT * FROM proveedor");
+        res.json(data);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export const methods = {
     add,
+    getproveedores
 };

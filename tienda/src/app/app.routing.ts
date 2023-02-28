@@ -9,7 +9,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 import { GuardRutasGuard } from './guard/guard-rutas.guard';
-
+import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
 
 
 const appRoutes:Routes =[
@@ -20,6 +20,7 @@ const appRoutes:Routes =[
     {path:'registro', component:RegistroComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},
     {path:'login', component:LoginComponent},
     {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
+    {path:'facturaproveedor', component:FacturaProveedorComponent},
     {path:'perfil-usuario', component:ActualizarUsuariosComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 

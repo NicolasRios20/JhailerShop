@@ -4,3 +4,4 @@ export interface Proveedor{
     ubicacion_p: String,
     cuenta_bancaria: String
 }
+

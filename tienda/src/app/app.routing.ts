@@ -8,20 +8,29 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/actualizar-usuarios.component';
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
-import { GuardRutasGuard } from './guard/guard-rutas.guard';
-import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
+import { GuardRutasGuard } from './guard/guardsCanActivate/guard-rutas.guard';
+import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.component';
+
 
 
 const appRoutes:Routes =[
 
+    //rutas compartidas
+    {path:'registro', component:RegistroComponent},
+    {path:'login', component:LoginComponent },
     {path:'productos', component:ProductosComponent},
-    {path:'crear-producto', component:CrearProductoComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
     {path:'carrito', component:CarritoComponent},
-    {path:'registro', component:RegistroComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},
-    {path:'login', component:LoginComponent},
+    {path:'nav', component:NavAdmiComponent},
+    
+    //rutas del aministrador
     {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
-    {path:'facturaproveedor', component:FacturaProveedorComponent},
+    {path:'crear-producto', component:CrearProductoComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
+
+    //rutas del usuario
     {path:'perfil-usuario', component:ActualizarUsuariosComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},
+    
+
+    //ruta por defecto
     {path:'**',pathMatch:'full',redirectTo:'productos'},
 
 ];

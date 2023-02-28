@@ -62,13 +62,14 @@ const verificaruser= async (req, res) => {
                     let id = data[0].id_cliente
                     let contras = data[0].contrasena;
                     let rol = data[0].rol
+                    let foto = data[0].foto
                     const equals = bcrypt.compareSync(req.body.contrasena, contras);
                     console.log(equals)
                     if (equals != true) {
                         res.status(400).send({message: 'contraseña invalida'})
                     } else {
 
-                        jwt.sign({id, rol}, 'secre',{expiresIn: '60000s'}, (err,token)=>{
+                        jwt.sign({id, rol, foto}, 'secre',{expiresIn: '60000s'}, (err,token)=>{
                             if(err) {
                                 console.log(err);
                             }else {

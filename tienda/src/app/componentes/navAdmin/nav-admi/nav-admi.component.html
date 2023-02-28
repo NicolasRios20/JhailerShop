@@ -7,7 +7,6 @@
     />
 
 
-
 <nav class="navbar navbar-expand-lg" style="background-color: #3B0C04;">
   <div class="container-fluid"> 
     <div class="collapse navbar-collapse mx-5" id="navbarText">
@@ -16,26 +15,18 @@
               <a class="nav-link active text-light" href="#">Inicio</a>
           </li>
         <li class="nav-item">
-          <a  [routerLink]="['/perfil-usuario']" class="nav-link active text-light" aria-current="page" href="#">Editar Perfil</a>
+          <a [routerLink]="['/crear-producto']" class="nav-link active text-light" aria-current="page" href="#">Crear Producto</a>
         </li>
-        <li *ngIf="login == ''" class="nav-item">
-          <a [routerLink]="['/login']" class="nav-link active text-light" aria-current="page" href="#">login</a>
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="#">Factura</a>
         </li>
+        <li class="nav-item">
+            <a [routerLink]="['/proveedor']" class="nav-link active text-light" aria-current="page" href="#">Crear Proveedor</a>
+          </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categorias
           </a>
-          
-          <ul class="dropdown-menu">
-            <table>
-              <tr *ngFor="let item of categoria" >
-                <td>
-                  <a href="#"><label for="text">{{item.nombre_categoria}}</label></a>
-                  
-                </td>
-              </tr>
-            </table>
-          </ul>
         </li>
       </ul>
 
@@ -49,10 +40,10 @@
 
       <span class="navbar-text" id="contenedorPerfil">
         <li class="nav-item dropdown" style="list-style: none;">
-            <img  class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="foto" src="{{imagen}}" alt="">
+            <img  class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="foto" src="https://i.ibb.co/94D9z5P/logo.jpg" alt="">
           
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['/registro']" class="dropdown-item" href="#">registro</a></li>
+            <li><a class="dropdown-item" href="perfil-usuario">Perfil</a></li>
             <li><a class="dropdown-item" href="#" (click)="cerrarSesion()">Cerrar sesion</a></li>
           </ul>
         </li>
@@ -67,5 +58,3 @@
     </div>
   </div>
 </nav>
-
-<router-outlet></router-outlet> 

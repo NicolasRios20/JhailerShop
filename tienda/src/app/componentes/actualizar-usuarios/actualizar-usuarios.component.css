@@ -243,3 +243,16 @@ Copiar esto
     font-size: 35px; 
     padding-left: 12%;
 }
+
+/*subir archivo*/
+label input[type='file']{ display: none; }
+.label1 {
+  cursor: pointer;
+  background: #177987;
+  text-shadow: -2px -1px 0 rgb(45, 57, 68);
+  color: #FFF;
+  border-radius: 4px;
+  padding: 5px 27px;
+}
+
+

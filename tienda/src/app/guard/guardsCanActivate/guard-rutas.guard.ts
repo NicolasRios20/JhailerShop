@@ -30,7 +30,7 @@ export class GuardRutasGuard implements CanActivate{
     if(route.data['rol'] == iduser.rol ){
       return true
     }else{
-      this.route.navigate(['/']);
+      this.route.navigate(['/producto']);
       return false;
     }
   }

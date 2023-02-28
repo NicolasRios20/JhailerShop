@@ -36,7 +36,7 @@ export class ProductosComponent implements OnInit {
 
     this.productosService.getAllproductos()
     .subscribe(data => {
-        this.productos = data;
+        this.productos = data.reverse();
     });
  
   }

@@ -10,6 +10,9 @@ import { ActualizarUsuariosComponent } from './componentes/actualizar-usuarios/a
 import { ProveedorComponent } from './componentes/proveedor/proveedor.component';
 import { GuardRutasGuard } from './guard/guardsCanActivate/guard-rutas.guard';
 import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.component';
+import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
+import { HistorialProveedorComponent } from './componentes/historial-proveedor/historial-proveedor.component';
+import { VerFacturaComponent } from './componentes/ver-factura/ver-factura.component';
 
 
 
@@ -25,6 +28,9 @@ const appRoutes:Routes =[
     //rutas del aministrador
     {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
     {path:'crear-producto', component:CrearProductoComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
+    {path:'facturaproveedor',component:FacturaProveedorComponent},
+    {path:'facturas',component:HistorialProveedorComponent},
+    {path:'verfacturas/:id',component:VerFacturaComponent},
 
     //rutas del usuario
     {path:'perfil-usuario', component:ActualizarUsuariosComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},

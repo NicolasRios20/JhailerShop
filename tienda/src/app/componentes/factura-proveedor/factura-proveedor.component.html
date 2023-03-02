@@ -58,6 +58,7 @@
           <thead>
             <tr>
               <th>No</th>
+              <th>codigo Producto</th>
               <th>nombre</th>
               <th>Cantidad</th>
               <th>Precio Unitario</th>
@@ -71,10 +72,12 @@
               <td>{{fila.columna3}}</td>
               <td>{{fila.columna4}}</td>
               <td>{{fila.columna5}}</td>
+              <td>{{fila.columna6}}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
+              <th></th>
               <th></th>
               <th></th>
               <th></th>
@@ -84,6 +87,8 @@
           </tfoot>
         </table>
       </div>
+
+      
     
       <div class="cond row">
         <div class="col-12 mt-3">
@@ -91,12 +96,14 @@
           <p>El pago se debe realizar en un plazo de 15 dias.</p>
           <p>
             Banco Banreserva
-            <br />
+            <br/>
             IBAN: DO XX 0075 XXXX XX XX XXXX XXXX
-            <br />
+            <br/>
             Código SWIFT: BPDODOSXXXX
           </p>
         </div>
       </div>
   </div>
 </div>
+
+<button type="submit" (click)="enviar()">guardar</button>

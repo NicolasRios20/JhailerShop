@@ -1,4 +1,4 @@
-const items = document.getElementById('items')
+/*const items = document.getElementById('items')
 const footer = document.getElementById('footer')
 const templateFooter = document.getElementById('template-footer').content
 const templateCarrito = document.getElementById('template-carrito').content
@@ -109,4 +109,4 @@ const btnAccion = e => {
         pintarCarrito()
     }
     e.stopPropagation()
-}
+}*/

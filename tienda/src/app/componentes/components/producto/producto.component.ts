@@ -22,6 +22,7 @@ export class ProductoComponent {
   }
 
   onAddTocart(){
+    
     this.addedProduct.emit(this.producto);
     
   }

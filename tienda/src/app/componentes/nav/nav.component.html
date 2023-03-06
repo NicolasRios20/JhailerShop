@@ -15,17 +15,11 @@
           <li class="nav-item ">
               <a class="nav-link active text-light" href="#">Inicio</a>
           </li>
-<<<<<<< HEAD
-        <li class="nav-item">
-          <a  [routerLink]="['/perfil-usuario']" class="nav-link active text-light" aria-current="page" href="#">Nosotros</a>
-=======
         <li *ngIf="!(login == '')" class="nav-item">
           <a  [routerLink]="['/perfil-usuario']" class="nav-link active text-light" aria-current="page" href="#">Editar Perfil</a>
->>>>>>> df5ab318c2891a1979477bb310c42b1707232dd7
         </li>
         <li *ngIf="login == ''" class="nav-item">
-          <a [routerLink]="['/login']" class="nav-link active text-light" aria-current="page" href="#">...
-          </a>
+          <a [routerLink]="['/login']" class="nav-link active text-light" aria-current="page" href="#"> login </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

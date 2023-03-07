@@ -8,8 +8,8 @@ const createTrans = () => {
         port: 465,
         secure:  true,
         auth:{
-            user: "nicolasrioscastillo8@gmail.com",
-            pass:"klpeyhqsjoabnabu"
+            user: "shopj2353@gmail.com",
+            pass:"hwfxixmrpbunitil"
         }
     })
 
@@ -19,7 +19,7 @@ const createTrans = () => {
 const sendMail = async (dato) =>{
     const transporter = createTrans()
     const info =await transporter.sendMail({
-        from: '"nicolas Rios" <nicolasrioscastillo8@gmail.com>',
+        from: '"Jailer Shop" <shopj2353@gmail.com>',
         to: `${dato.correo}`,
         subject: `Bienvenido ha Jailer Shop ${dato.nombre}` ,
         text: 'Por favor, encuentra el archivo PDF adjunto.',

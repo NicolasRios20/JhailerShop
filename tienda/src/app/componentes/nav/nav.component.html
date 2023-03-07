@@ -19,8 +19,7 @@
           <a  [routerLink]="['/perfil-usuario']" class="nav-link active text-light" aria-current="page" href="#">Editar Perfil</a>
         </li>
         <li *ngIf="login == ''" class="nav-item">
-          <a [routerLink]="['/login']" class="nav-link active text-light" aria-current="page" href="#">...
-          </a>
+          <a [routerLink]="['/login']" class="nav-link active text-light" aria-current="page" href="#"> login </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle active text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,4 +70,4 @@
   </div>
 </nav>
 
-<router-outlet></router-outlet> 
+

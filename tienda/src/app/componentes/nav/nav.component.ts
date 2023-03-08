@@ -27,8 +27,8 @@ export class NavComponent implements OnInit {
     this.imagen = iduser.foto
   }
 
-  idCatecoria(even: any){
-    console.log(even.value)
+  idCategoria(even: any){
+    console.log(even)
   }
 
   cerrarSesion(){

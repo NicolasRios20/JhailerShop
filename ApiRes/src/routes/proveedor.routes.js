@@ -5,5 +5,6 @@ const router = Router();
 
 router.post("/", proveedorController.add);//creacion de proveedor
 router.get("/", proveedorController.getproveedores);
+router.delete("/:cedula",proveedorController.eliminarProveedor)
 
 export default router;

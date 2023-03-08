@@ -25,4 +25,8 @@ export class ProveedorService {
     return this.http.get<any>(this.factura);
   }
 
+  eliminarProveedor(cedula:any){
+    return this.http.delete<Proveedor[]>(`${this.url}${cedula}`);
+  }
+
 }

@@ -14,12 +14,14 @@ import { Location } from '@angular/common';
 export class CarritoComponent implements OnInit {
 
   myShoppingCart: any;
-  total = 0;
+  //total: number = 0;
   datosTabla: any = []
   cantidad = 1;
   precio = 0;
-  
+  subtotal = 0
   productos: any [] = []
+  total = 0
+  sub = 0
   
 
   constructor(
@@ -27,7 +29,7 @@ export class CarritoComponent implements OnInit {
 
   ) { 
     this.myShoppingCart = this.srviciosService.getMyShoppingCart();
-    this.total = this.myShoppingCart.reduce((sum: any,item: { price: any; }) => sum + item.price, 0);
+    
     const producto = localStorage.getItem('productos');
     if (producto !== null) {
       this.productos = JSON.parse(producto);
@@ -40,10 +42,18 @@ export class CarritoComponent implements OnInit {
       columna2 : this.productos[i].nombre_producto,
       columna3: this.cantidad,
       columna4: this.productos[i].precio_producto,
-      columna5: this.precio,
-    }
+      columna6: this.subtotal,     
+      }
+
+      
+    
 
     this.datosTabla.push(nuevaFila)
+    console.log(this.datosTabla)
+
+    console.log(this.total)
+    
+
     }
 
   }
@@ -68,6 +78,9 @@ export class CarritoComponent implements OnInit {
   
   incrementarCantidad(index: number) {
     this.datosTabla[index].columna3++;
+    this.datosTabla[index].columna6 = this.datosTabla[index].columna4 + this.datosTabla[index].columna6
+    this.total += this.datosTabla[index].columna6
+    console.log(this.total)
   }
 
   decrementarCantidad(index: number) {
@@ -76,6 +89,9 @@ export class CarritoComponent implements OnInit {
       
     }else{
       this.datosTabla[index].columna3--;
+      this.datosTabla[index].columna6 =  this.datosTabla[index].columna4 - this.datosTabla[index].columna6
+      this.subtotal = this.datosTabla[index].columna6
+      this.total -= this.datosTabla[index].columna6
     }
   }
 
@@ -96,10 +112,13 @@ export class CarritoComponent implements OnInit {
       localStorage.removeItem('productos')
       localStorage.setItem('productos',JSON.stringify(produ))
       location.reload();
-  }
+    }
 
 
+    
   }
+
+  
 
 
 }

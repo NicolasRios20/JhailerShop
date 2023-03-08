@@ -11,7 +11,9 @@
                     <th scope="col">Producto</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Acción</th>
-                    <th scope="col">Total</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">subtotal</th>
+                    <th scope="col">Eliminar</th>
                 </tr>
                 <tr *ngFor="let fila of datosTabla, let i = index">
                     <th scope="row">{{fila.columna1}}</th>
@@ -22,16 +24,20 @@
                         <button class="btn btn-danger btn-sm" value="" (click)="incrementarCantidad(i)">+</button>
                     </td>
                     <td>{{fila.columna4}}</td>
+                    <td>
+                        <p><input type="text" #nf [(ngModel)]="subtotal" style="visibility:hidden">{{fila.columna6}}</p>
+                    </td>
                     <td><button (click)="eliminarCantidad(fila.columna1)">eliminar</button></td>
-
                 </tr>
 
                 <th scope="row" colspan="2">Total productos</th>
-                <td>{{this.total}}</td>
+                <td>
+                    <p><input type="text" #nf [(ngModel)]="total" style="visibility:hidden">{{total}}</p>
+                </td>
                 <td>
                     <button id="vaciar-carrito">vaciar todo</button>
                 </td>
-                <td class="font-weight-bold" *ngFor="let fila of datosTabla">$<span>{{fila.columna5}}</span></td>
+                <td class="font-weight-bold"><span></span></td>
 
             </thead>
         </table>

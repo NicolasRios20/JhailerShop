@@ -6,22 +6,22 @@ const createTrans = () => {
     const transport = nodemeiler.createTransport({
         host: "smtp.gmail.com",
         port: 465,
-        secure:  true,
-        auth:{
-            user: "shopj2353@gmail.com",
-            pass:"hwfxixmrpbunitil"
+        secure: true,
+        auth: {
+            user: "nicolasrioscastillo8@gmail.com",
+            pass: "jnxikvpzqtzjsafx"
         }
     })
 
     return transport
 };
 
-const sendMail = async (dato) =>{
+const sendMail = async(dato) => {
     const transporter = createTrans()
-    const info =await transporter.sendMail({
+    const info = await transporter.sendMail({
         from: '"Jailer Shop" <shopj2353@gmail.com>',
         to: `${dato.correo}`,
-        subject: `Bienvenido ha Jailer Shop ${dato.nombre}` ,
+        subject: `Bienvenido ha Jailer Shop ${dato.nombre}`,
         text: 'Por favor, encuentra el archivo PDF adjunto.',
         /*attachments: [{
             filename: 'hola.pdf',
@@ -32,5 +32,4 @@ const sendMail = async (dato) =>{
     console.log("Message sent: %s", info.messageId)
 }
 
-exports.sendMail = (dato) =>sendMail(dato)
-
+exports.sendMail = (dato) => sendMail(dato)

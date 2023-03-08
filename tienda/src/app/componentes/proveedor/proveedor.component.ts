@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProveedorService } from '../../services/proveedor.service';
 import { Proveedor } from '../../models/proveedor.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proveedor',
@@ -13,10 +14,18 @@ export class ProveedorComponent implements OnInit {
   proveedor: Proveedor[] = []
 
   constructor(
-    private proveedorService: ProveedorService
-  ) { }
+    private proveedorService: ProveedorService,
+    private route: Router,
+    
+  ) { 
+
+  }
 
   ngOnInit(): void {
+    this.proveedorService.getproveedores().subscribe(data => {
+      console.log(data);
+      this.proveedor = data.reverse()
+  });
   }
 
   formulario = new FormGroup({
@@ -30,7 +39,9 @@ export class ProveedorComponent implements OnInit {
     this.proveedor = form;
     this.proveedorService.createProveedor(form)
     .subscribe(data => {
-      alert("Registro Exitoso")
+      alert("Registro Exitoso");
+      this.ngOnInit()
+      this.formulario.reset();
     },error =>{
       if(error.status == 400){
         alert("Verificar Campos")
@@ -38,6 +49,20 @@ export class ProveedorComponent implements OnInit {
         alert("El Usuario ya Existe");
       }
     });
+  }
+
+  ProveedorEliminar(event:any){
+
+    let resultado = window.confirm('Estas seguro?');
+    if (resultado === true) {
+      let cedula = event;
+      this.proveedorService.eliminarProveedor(cedula)
+      .subscribe(data =>{
+        this.ngOnInit()
+      });
+    } else { 
+        window.alert('Pareces indeciso');
+    }
   }
 
 }

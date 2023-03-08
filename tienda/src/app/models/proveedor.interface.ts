@@ -5,3 +5,4 @@ export interface Proveedor{
     cuenta_bancaria: String
 }
 
+

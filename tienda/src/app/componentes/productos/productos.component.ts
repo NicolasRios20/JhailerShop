@@ -15,9 +15,8 @@ export class ProductosComponent implements OnInit {
   myShoppingCart: Producto[] = [];
   total=0;
   productos: Producto[] = [];
-  producto1: any[]=[];
   producto : any = [];
-  nico: any;
+
   
   constructor(
     private srviciosService: SrviciosService,
@@ -38,44 +37,32 @@ export class ProductosComponent implements OnInit {
 
     this.productosService.getAllproductos()
     .subscribe(data => {
-        this.productos = data;
+        this.productos = data.reverse();
     });
  
   }
 
   onAddToShoppingCart(produtos:Producto){
     this.producto = produtos
-    let id = this.producto.id_producto
-    let idProducto:any
     let produc: any
     
     if (!localStorage.getItem('productos')) {
       localStorage.setItem('productos',JSON.stringify([]))
-      this.srviciosService.addProductos(produtos)
-      
+      this.srviciosService.addProductos(this.producto)
     }else{
       produc = localStorage.getItem('productos')
-      if (produc !== null) {
-        this.nico = JSON.parse(produc);
-        for (let i = 0; i < this.nico.length; i++) {
-          idProducto = this.nico[i].id_producto;
-          this.producto1.push(idProducto)
-          console.log(this.producto1)
-          //console.log(`id_producto of object ${i}: ${idProducto}`);
-          if (id == this.producto1) {
-            console.log("ya existe")
-          } else {
-            this.srviciosService.addProductos(produtos)
-            console.log("se agrego")
-          }
-  
-        }
+      const productosGuardados = JSON.parse(produc);
+      const productoExistente = productosGuardados.find((producto: any) => producto.id_producto === this.producto.id_producto);
+      if (productoExistente) {
+        console.log("El producto ya existe en el carrito");
+      } else {
+        productosGuardados.push(this.producto);
+        localStorage.setItem('productos', JSON.stringify(productosGuardados));
+        console.log("Se agregó el producto al carrito");
       }
     }
-    console.log(produc)
-
-
-
-    this.total = this.srviciosService.getTotal();
+    
   }
 }
+//this.total = this.srviciosService.getTotal();
+        

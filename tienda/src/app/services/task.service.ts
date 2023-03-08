@@ -40,7 +40,6 @@ export class TaskService {
   crearUsuario(task: Task){
     const path = `${this.api}`;
     return this.http.post(path, task);
-
   }
   actualizarUsuario(id: any){
     const token = localStorage.getItem('token')

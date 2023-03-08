@@ -13,15 +13,17 @@
                     <th scope="col">Acción</th>
                     <th scope="col">Total</th>
                 </tr>
-                <tr *ngFor="let fila of datosTabla">
+                <tr *ngFor="let fila of datosTabla, let i = index">
                     <th scope="row">{{fila.columna1}}</th>
                     <td>{{fila.columna2}}</td>
-                    <td><input type="text" [(ngModel)]="cantidad" style="visibility: hidden;">{{cantidad}}</td>
+                    <td><input type="text" [(ngModel)]="cantidad" style="visibility: hidden;">{{fila.columna3}}</td>
                     <td>
-                        <button class="btn btn-info btn-sm" value="">-</button>
-                        <button class="btn btn-danger btn-sm" value="" (click)="incrementar()">+</button>
+                        <button class="btn btn-info btn-sm" value="" (click)="decrementarCantidad(i)">-</button>
+                        <button class="btn btn-danger btn-sm" value="" (click)="incrementarCantidad(i)">+</button>
                     </td>
                     <td>{{fila.columna4}}</td>
+                    <td><button (click)="eliminarCantidad(fila.columna1)">eliminar</button></td>
+
                 </tr>
 
                 <th scope="row" colspan="2">Total productos</th>

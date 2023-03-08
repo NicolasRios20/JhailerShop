@@ -25,6 +25,8 @@ import { ProveedorComponent } from './componentes/proveedor/proveedor.component'
 import { InterceptorService } from './interceptors/interceptor.service';
 import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
 import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.component';
+import { HistorialProveedorComponent } from './componentes/historial-proveedor/historial-proveedor.component';
+import { VerFacturaComponent } from './componentes/ver-factura/ver-factura.component';
 
 
 
@@ -47,6 +49,8 @@ import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.compo
     ProveedorComponent,
     FacturaProveedorComponent,
     NavAdmiComponent,
+    HistorialProveedorComponent,
+    VerFacturaComponent,
    
   ],
   imports: [

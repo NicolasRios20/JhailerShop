@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SrviciosService } from '../../services/srvicios.service';
 import Swal from "sweetalert2";
-import { Producto } from 'src/app/models/product.model';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -14,14 +16,15 @@ export class CarritoComponent implements OnInit {
   myShoppingCart: any;
   total = 0;
   datosTabla: any = []
-  cantidad = 0;
+  cantidad = 1;
   precio = 0;
   
   productos: any [] = []
   
 
   constructor(
-    private srviciosService: SrviciosService,
+    private srviciosService: SrviciosService,private route: Router,private location: Location
+
   ) { 
     this.myShoppingCart = this.srviciosService.getMyShoppingCart();
     this.total = this.myShoppingCart.reduce((sum: any,item: { price: any; }) => sum + item.price, 0);
@@ -61,17 +64,42 @@ export class CarritoComponent implements OnInit {
     })
   }
 
-  /*calcularTotal(): number {
-    let total = 0;
-    for (let producto of this.productos) {
-      total += producto.precio;
-    }
-    return total;
-  }*/
 
-  incrementar(){
-    this.cantidad = this.cantidad+1
-    console.log(this.cantidad)
+  
+  incrementarCantidad(index: number) {
+    this.datosTabla[index].columna3++;
   }
+
+  decrementarCantidad(index: number) {
+    //this.datosTabla[index].columna3--;
+    if (this.datosTabla[index].columna3 == 1) {
+      
+    }else{
+      this.datosTabla[index].columna3--;
+    }
+  }
+
+  eliminarCantidad(id: any){
+    console.log(id)
+    let produc: any
+    produc = localStorage.getItem('productos')
+    this.productos = JSON.parse(produc);
+    for (let i = 0; i < this.productos.length; i++) {
+      // Comparar el ID del producto actual con el ID a eliminar
+      if (this.productos[i].id_producto === id) {
+          // Eliminar el producto del arreglo
+          //this.productos.splice(i, 1);
+          console.log(this.productos.splice(i, 1), "hola")
+      }
+      console.log(this.productos, 'hola')
+      let produ: any = this.productos
+      localStorage.removeItem('productos')
+      localStorage.setItem('productos',JSON.stringify(produ))
+      location.reload();
+  }
+
+
+  }
+
 
 }

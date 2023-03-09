@@ -24,6 +24,7 @@ const appRoutes:Routes =[
     {path:'productos', component:ProductosComponent},
     {path:'carrito', component:CarritoComponent},
     {path:'nav', component:NavAdmiComponent},
+    {path:'facturacliente',component:CarritoComponent},
     
     //rutas del aministrador
     {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
@@ -31,6 +32,7 @@ const appRoutes:Routes =[
     {path:'facturaproveedor',component:FacturaProveedorComponent},
     {path:'facturas',component:HistorialProveedorComponent},
     {path:'verfacturas/:id',component:VerFacturaComponent},
+    
 
     //rutas del usuario
     {path:'perfil-usuario', component:ActualizarUsuariosComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},

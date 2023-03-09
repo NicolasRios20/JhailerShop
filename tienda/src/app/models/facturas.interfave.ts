@@ -21,3 +21,12 @@ export interface productosFP {
     cantidad: any;
     costo: any;
 }
+
+
+export interface productosFP {
+    id_compra: any;
+    id_producto: any
+    nombre_producto: string;
+    cantidad: any;
+    costo: any;
+}

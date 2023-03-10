@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import { FacturasP } from '../models/facturas.interfave';
+import { FacturasC } from '../models/facturas.interfave';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class FacturaclienteService {
   api = '/api/facturaCliente/';
   factura = '/api/facturaCliente/'
-  //urls = '/api/facturaProveedor/facturas';
+  urls = '/api/facturaCliente/facturas';
   //url = '/api/facturaProveedor/facturas';
 
 
@@ -25,13 +26,13 @@ export class FacturaclienteService {
     return this.http.get<any>(this.factura);
   }
 
-  /*getFacturasP(){
-    return this.http.get<FacturasP[]>(this.urls);
+  getFacturasC(){
+    return this.http.get<FacturasC[]>(this.urls);
   }
 
   verFactura(id:any){
     const path = `${this.api}${id}`
     return this.http.get<any>(path)
-  }*/
+  }
 
 }

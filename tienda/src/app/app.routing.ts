@@ -13,8 +13,8 @@ import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.compo
 import { FacturaProveedorComponent } from './componentes/factura-proveedor/factura-proveedor.component';
 import { HistorialProveedorComponent } from './componentes/historial-proveedor/historial-proveedor.component';
 import { VerFacturaComponent } from './componentes/ver-factura/ver-factura.component';
-
-
+import { HistorialClienteComponent } from "./componentes/historial-cliente/historial-cliente.component";
+import { VerFacturaCComponent } from './componentes/ver-factura-c/ver-factura-c.component';
 
 const appRoutes:Routes =[
 
@@ -32,7 +32,8 @@ const appRoutes:Routes =[
     {path:'facturaproveedor',component:FacturaProveedorComponent},
     {path:'facturas',component:HistorialProveedorComponent},
     {path:'verfacturas/:id',component:VerFacturaComponent},
-    
+    {path:'facturasC',component:HistorialClienteComponent},
+    {path:'verfacturasC/:id',component:VerFacturaCComponent},
 
     //rutas del usuario
     {path:'perfil-usuario', component:ActualizarUsuariosComponent, data:{rol: ['0']}, canActivate: [GuardRutasGuard]},

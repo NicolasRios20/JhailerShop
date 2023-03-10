@@ -62,7 +62,7 @@ const getDatosFactura = async (req, res) =>{
         const { no_venta } = req.params;
         const connection = await getConnection();
         const encabezado = await connection.query("SELECT venta.no_venta, venta.fecha_venta, cliente.nombre, cliente.ciudad, cliente.direccion, cliente.telefono, venta.total_venta FROM venta INNER JOIN cliente ON cliente.id_cliente = venta.id_cliente WHERE no_venta = ?;", [no_venta]);
-        const remision = await connection.query("SELECT productos.id_producto, productos.nombre_producto, venta_producto.cantidad, venta_producto.valor_total FROM venta_producto INNER JOIN productos ON productos.id_producto = venta_producto.id_producto WHERE venta_producto.no_venta = ?;", [no_venta]);
+        const remision = await connection.query("SELECT productos.id_producto, productos.nombre_producto, productos.precio_producto, venta_producto.cantidad, venta_producto.valor_total FROM venta_producto INNER JOIN productos ON productos.id_producto = venta_producto.id_producto WHERE venta_producto.no_venta = ?;", [no_venta]);
         var remi = JSON.parse(JSON.stringify(remision))
         let respuesta = []
         respuesta.push(encabezado,remi)

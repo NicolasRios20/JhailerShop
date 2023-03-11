@@ -29,7 +29,7 @@ const appRoutes:Routes =[
     {path:'proveedor', component:ProveedorComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
     {path:'crear-producto', component:CrearProductoComponent, data:{rol: ['1']}, canActivate: [GuardRutasGuard]},
     {path:'facturaproveedor',component:FacturaProveedorComponent},
-    {path:'facturas',component:HistorialProveedorComponent},
+    {path:'historial-factura',component:HistorialProveedorComponent},
     {path:'verfacturas/:id',component:VerFacturaComponent},
 
     //rutas del usuario

@@ -26,7 +26,7 @@ const getproveedores = async (req, res) => {
     try {
         const {} = req.params;
         const connection = await getConnection();
-        const data= await connection.query("SELECT * FROM proveedor");
+        const data = await connection.query("SELECT * FROM proveedor");
         res.json(data);
     } catch (error) {
         res.status(500);
@@ -34,7 +34,23 @@ const getproveedores = async (req, res) => {
     }
 }
 
+const eliminarProveedor = async (req, res) => {
+
+    try {
+        const { cedula } = req.params;
+        console.log(cedula)
+        const connection = await getConnection();
+        const result = await connection.query("DELETE FROM proveedor WHERE cedula = ?", cedula);
+        res.json(result);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+};
+
+
 export const methods = {
     add,
-    getproveedores
+    getproveedores,
+    eliminarProveedor,
 };

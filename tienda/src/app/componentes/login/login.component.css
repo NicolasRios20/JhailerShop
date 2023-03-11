@@ -9,11 +9,9 @@
     background-attachment: fixed;
     /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
     background-size: cover;
-    height: 100vh;
+    height: 90vh;
 }
-main{
-  height: 100%;
-}
+
 .login{
     width: 60vh;
     height: 68vh;
@@ -23,6 +21,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 20px;
 }
 
   /* form starting stylings ------------------------------- */

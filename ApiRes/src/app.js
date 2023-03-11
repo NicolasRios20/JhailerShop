@@ -6,6 +6,7 @@ import usersRoutes from "./routes/usuarios.routes";
 import categoriasRoutes from "./routes/categorias.routes";
 import proveedorRoutes from "./routes/proveedor.routes";
 import facturaProveedor from "./routes/facturaProveedor.routes";
+import facturaCliente from "./routes/facturaCliente.routes";
 import fileUpload from "express-fileupload";
 const app = express();
 
@@ -29,5 +30,6 @@ app.use("/api/users", usersRoutes);
 app.use("/api/categorias", categoriasRoutes);
 app.use("/api/proveedor", proveedorRoutes);
 app.use("/api/facturaProveedor", facturaProveedor);
+app.use("/api/facturaCliente", facturaCliente);
 
 export default app;

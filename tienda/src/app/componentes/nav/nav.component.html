@@ -92,8 +92,8 @@
             <table>
               <tr *ngFor="let item of categoria" >
                 <td>
-                  <a href="#"><label for="text">{{item.nombre_categoria}}</label></a>
-                  
+                  <i href="#" (click)="idCategoria(item.id_categoria)"><label for="text">{{item.nombre_categoria}}</label></i>
+
                 </td>
               </tr>
             </table>

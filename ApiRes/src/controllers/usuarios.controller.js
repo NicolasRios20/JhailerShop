@@ -1,6 +1,7 @@
 import { getConnection } from "../database/database";
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken')
+const emailer = require('../controllers/correo')
 
 //  consultar todos los usuarios
 const getAll = async (req, res) => {
@@ -35,6 +36,7 @@ const add = async (req, res) => {
                 const connection = await getConnection();
                 await connection.query("INSERT INTO cliente SET ?", [dato] );
                 console.log("registro exitoso");
+                emailer.sendMail(dato)
                 res.json( dato );
             } catch {
                 console.log("ya existe el correo");

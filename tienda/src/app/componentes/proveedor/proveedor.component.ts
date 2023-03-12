@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProveedorService } from '../../services/proveedor.service';
 import { Proveedor } from '../../models/proveedor.interface';
 import { Router } from '@angular/router';
+import { ModalfuormularioproveedorComponent } from '../modalfuormularioproveedor/modalfuormularioproveedor.component';
 
 @Component({
   selector: 'app-proveedor',
@@ -14,16 +15,13 @@ export class ProveedorComponent implements OnInit {
   proveedor: Proveedor[] = []
 
   constructor(
-    private proveedorService: ProveedorService,
-    private route: Router,
-    
+    private proveedorService: ProveedorService,    
   ) { 
 
   }
 
   ngOnInit(): void {
     this.proveedorService.getproveedores().subscribe(data => {
-      console.log(data);
       this.proveedor = data.reverse()
   });
   }
@@ -51,7 +49,7 @@ export class ProveedorComponent implements OnInit {
     });
   }
 
-  ProveedorEliminar(event:any){
+  proveedorEliminar(event:any){
 
     let resultado = window.confirm('Estas seguro?');
     if (resultado === true) {

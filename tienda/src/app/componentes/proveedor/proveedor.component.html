@@ -54,8 +54,9 @@
       <td>{{proveedor.nombre_proveedor}}</td>
       <td>{{proveedor.cuenta_bancaria}}</td>
       <td>{{proveedor.ubicacion_p}}</td>
-      <td><i class="fas fa-pencil" style="color: rgb(0, 59, 59);"></i></td>
-      <td><i class="fa-solid fa-trash-can" (click)="ProveedorEliminar(proveedor.cedula)"></i></td>
+      <!--<td><i class="fas fa-pencil" (click)="proveedorEditar(proveedor.cedula)" style="color: rgb(0, 59, 59);"></i></td>-->
+      <td><app-modalfuormularioproveedor></app-modalfuormularioproveedor></td>
+      <td><i class="fa-solid fa-trash-can" (click)="proveedorEliminar(proveedor.cedula)"></i></td>
     </tr>
   </tbody>
 </table>

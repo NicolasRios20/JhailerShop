@@ -4,7 +4,8 @@ import { methods as proveedorController } from "../controllers/proveedor.control
 const router = Router();
 
 router.post("/", proveedorController.add);//creacion de proveedor
-router.get("/", proveedorController.getproveedores);
-router.delete("/:cedula",proveedorController.eliminarProveedor)
+router.get("/", proveedorController.getProveedores);//listar proveedores
+router.get("/:cedula",proveedorController.getProveedor)//listar un unico proveedor por cedula
+router.delete("/:cedula",proveedorController.eliminarProveedor)//eliminar proveedor por cedula
 
 export default router;

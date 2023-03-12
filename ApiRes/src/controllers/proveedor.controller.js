@@ -22,7 +22,8 @@ const add = async (req, res) => {
     }
 };
 
-const getproveedores = async (req, res) => {
+//listar proveedores
+const getProveedores = async (req, res) => {
     try {
         const {} = req.params;
         const connection = await getConnection();
@@ -34,6 +35,7 @@ const getproveedores = async (req, res) => {
     }
 }
 
+//eliminar proveedor por cedula
 const eliminarProveedor = async (req, res) => {
 
     try {
@@ -49,8 +51,21 @@ const eliminarProveedor = async (req, res) => {
 };
 
 
+const getProveedor = async (req, res) => {
+    try {
+        const {cedula} = req.params;
+        const connection = await getConnection();
+        const data = await connection.query("SELECT * FROM proveedor WHERE cedula = ?",cedula);
+        res.json(data);
+    } catch (error) {
+        res.status(500);
+        res.send(error.message);
+    }
+}
+
 export const methods = {
     add,
-    getproveedores,
+    getProveedores,
+    getProveedor,
     eliminarProveedor,
 };

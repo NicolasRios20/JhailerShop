@@ -3,7 +3,7 @@ import { TaskService } from 'src/app/services/task.service';
 import jtw_decode from "jwt-decode";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { datosUsuario } from 'src/app/models/task';
-import { Token } from '@angular/compiler';
+
 
 
 @Component({
@@ -12,16 +12,19 @@ import { Token } from '@angular/compiler';
   styleUrls: ['./actualizar-usuarios.component.css']
 })
 export class ActualizarUsuariosComponent implements OnInit {
-  foto: any;
+  
 
-  constructor(private taskservice : TaskService) { }
+  constructor(
+    private taskservice : TaskService,
+    ) { }
   id:any
   user: datosUsuario[]=[]
+  value:any;
+
   ngOnInit(): void {
     let datoToken: any = localStorage.getItem('token');
     let iduser: any = jtw_decode(datoToken)
     this.id = parseInt(iduser.id)
-    console.log(this.id)
     this.taskservice.actualizarUsuario(this.id)
     .subscribe(data => {
       this.user = data
@@ -34,12 +37,12 @@ export class ActualizarUsuariosComponent implements OnInit {
           file: this.user[0].foto,
           fileSource: this.user[0].foto
         })
+        this.value = this.user[0].foto
     },error =>{
       alert("Ocurrio un Error por favor Verificar los Campos");
-    });
-
-    
+    }); 
   }
+
   formulario = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required]),
@@ -53,17 +56,17 @@ export class ActualizarUsuariosComponent implements OnInit {
   actualizarUser(form:any){
     const formData = new FormData()
     const file = this.formulario.get('fileSource')
-    console.log('hola ',file)
     formData.append('nombre',this.formulario.get('nombre')?.value || '');
     formData.append('correo',this.formulario.get('correo')?.value || '');
     formData.append('ciudad', this.formulario.get('ciudad')?.value || '');
     formData.append('direccion', this.formulario.get('direccion')?.value || '');
     formData.append('telefono', this.formulario.get('telefono')?.value || '');
     formData.append('file', file?.value || '');
-    console.log(formData)
     this.taskservice.actualizar(formData,this.id).subscribe(data =>{
       console.log(data)
     })
+    
+    this.ngOnInit()
   }
 
 

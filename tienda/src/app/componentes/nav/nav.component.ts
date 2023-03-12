@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CategoriasService } from '../../services/categorias.service';
 import { Categoria } from '../../models/categorias.interface';
 import jtw_decode from "jwt-decode";
+
 
 @Component({
   selector: 'app-nav',
@@ -9,9 +10,12 @@ import jtw_decode from "jwt-decode";
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+
+  @Input() value:any
   categoria: Categoria[] = [];
   imagen: any;
   login: any;
+
   constructor(
     private categoriasService: CategoriasService,
   ) { }
@@ -20,11 +24,8 @@ export class NavComponent implements OnInit {
     this.botonLogin();
     this.categoriasService.getAll()
     .subscribe(data => {
-        this.categoria = data;
+        this.categoria = data; 
     })
-    let datoToken: any = localStorage.getItem('token');
-    let iduser: any = jtw_decode(datoToken)
-    this.imagen = iduser.foto
   }
 
   idCategoria(even: any){
@@ -37,8 +38,6 @@ export class NavComponent implements OnInit {
 
   botonLogin(){
     if(localStorage.getItem('token')){
-      let datoToken: any = localStorage.getItem('token');
-      let iduser: any = jtw_decode(datoToken)
       this.login = null;
     }else{
       this.login = '';

@@ -15,7 +15,8 @@ export class ProductosComponent implements OnInit {
   myShoppingCart: Producto[] = [];
   total=0;
   productos: Producto[] = [];
-  
+  producto : any = [];
+
   
   constructor(
     private srviciosService: SrviciosService,
@@ -42,7 +43,26 @@ export class ProductosComponent implements OnInit {
   }
 
   onAddToShoppingCart(produtos:Producto){
-    this.srviciosService.addProductos(produtos)
-    this.total = this.srviciosService.getTotal();
+    this.producto = produtos
+    let produc: any
+    
+    if (!localStorage.getItem('productos')) {
+      localStorage.setItem('productos',JSON.stringify([]))
+      this.srviciosService.addProductos(this.producto)
+    }else{
+      produc = localStorage.getItem('productos')
+      const productosGuardados = JSON.parse(produc);
+      const productoExistente = productosGuardados.find((producto: any) => producto.id_producto === this.producto.id_producto);
+      if (productoExistente) {
+        console.log("El producto ya existe en el carrito");
+      } else {
+        productosGuardados.push(this.producto);
+        localStorage.setItem('productos', JSON.stringify(productosGuardados));
+        console.log("Se agregó el producto al carrito");
+      }
+    }
+    
   }
 }
+//this.total = this.srviciosService.getTotal();
+        

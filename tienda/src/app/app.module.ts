@@ -28,6 +28,8 @@ import { NavAdmiComponent } from './componentes/navAdmin/nav-admi/nav-admi.compo
 import { HistorialProveedorComponent } from './componentes/historial-proveedor/historial-proveedor.component';
 import { VerFacturaComponent } from './componentes/ver-factura/ver-factura.component';
 import { ModalfuormularioproveedorComponent } from './componentes/modalfuormularioproveedor/modalfuormularioproveedor.component';
+import { HistorialClienteComponent } from './componentes/historial-cliente/historial-cliente.component';
+import { VerFacturaCComponent } from './componentes/ver-factura-c/ver-factura-c.component';
 
 
 
@@ -53,6 +55,8 @@ import { ModalfuormularioproveedorComponent } from './componentes/modalfuormular
     HistorialProveedorComponent,
     VerFacturaComponent,
     ModalfuormularioproveedorComponent,
+    HistorialClienteComponent,
+    VerFacturaCComponent,
    
   ],
   imports: [
